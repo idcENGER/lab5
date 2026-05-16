@@ -1,12 +1,13 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
+import model.MusicBands.*;
 import org.example.Utility.XmlHandler;
 
 import java.util.HashSet;
 
-public class Filter_contains_name extends AbstractCommand {
+public class Filter_contains_name extends model.commands.AbstractCommand {
     CollectionManager collectionManager;
     public Filter_contains_name(CollectionManager collectionManager) {
         super("fcn", "filter_contains_name: вывести элементы," +
@@ -15,7 +16,7 @@ public class Filter_contains_name extends AbstractCommand {
     }
 
     @Override
-    public void execute(String... args){
+    public Response execute(String... args){
         try{
             if(args.length == 0){
                 throw new ArrayIndexOutOfBoundsException("Аргумент не может быть равен нулю");
@@ -31,5 +32,6 @@ public class Filter_contains_name extends AbstractCommand {
         }catch (ArrayIndexOutOfBoundsException ex){
             System.out.println(ex.getMessage());
         }
+        return null;
     }
 }

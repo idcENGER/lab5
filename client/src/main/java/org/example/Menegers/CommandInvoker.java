@@ -1,8 +1,8 @@
 package org.example.Menegers;
 
-import org.example.Commands.AbstractCommand;
-import org.example.Utility.App;
-import org.example.Utility.XmlHandler;
+import model.commands.AbstractCommand;
+import org.example.Utility.Console;
+import utility.XmlHandler;
 
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
@@ -17,17 +17,19 @@ public class CommandInvoker {
         commandMap.put(command.getName(), command);
     }
 
-    public void execute(String commandName) throws NullPointerException, NoSuchFileException {
+    public void valid(String commandName) throws NullPointerException, NoSuchFileException {
         try {
-            if (App.args.length > 1) {
-                commandMap.get(commandName).execute(XmlHandler.SpaceRemover(App.args[1]));
+            if (Console.args.length > 1) {
+                commandMap.get(commandName).execute(XmlHandler.SpaceRemover(Console.args[1]));
             }else {
                 commandMap.get(commandName).execute();
             }
         }catch (NullPointerException ex){
             System.out.println("Unsupported command");
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -40,8 +42,10 @@ public class CommandInvoker {
             }
         }catch (NullPointerException ex){
             System.out.println("Unsupported command: "+commandName);
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

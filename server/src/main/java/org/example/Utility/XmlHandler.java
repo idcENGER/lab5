@@ -3,8 +3,8 @@ package org.example.Utility;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
+import model.MusicBands.MusicBand;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
 
 import com.thoughtworks.xstream.XStream;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class XmlHandler {
     
-    public static MusicBand DeserializeMusicBandXMLXStream(String data,CollectionManager collectionManager) {
+    public static MusicBand DeserializeMusicBandXMLXStream(String data, CollectionManager collectionManager) {
         try {
             XStream xStream = new XStream();
             xStream.allowTypes(new Class[] {MusicBand.class});

@@ -2,14 +2,15 @@ package org.example.Commands;
 
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
 import org.example.Utility.MusicBandBuilder;
 import org.example.Utility.XmlHandler;
+import model.MusicBands.*;
 
 import java.util.Scanner;
 
-public class Add_if_min extends AbstractCommand{
+public class Add_if_min extends model.commands.AbstractCommand {
 
     CollectionManager collectionManager;
 
@@ -19,7 +20,7 @@ public class Add_if_min extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) throws CannotResolveClassException, ConversionException {
+    public Response execute(String... args) throws CannotResolveClassException, ConversionException {
         try {
             if (args.length > 1){
                 throw new ArrayIndexOutOfBoundsException("Неверное количество аргументов");
@@ -46,5 +47,6 @@ public class Add_if_min extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ex){
             System.out.println(ex.getMessage());
         }
+        return null;
     }
 }

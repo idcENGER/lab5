@@ -1,11 +1,12 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
 import org.example.Utility.MusicBandBuilder;
 import org.example.Utility.XmlHandler;
+import model.MusicBands.*;
 
-public class Update_by_id extends AbstractCommand{
+public class Update_by_id extends model.commands.AbstractCommand {
     CollectionManager collectionManager;
 
     public Update_by_id(CollectionManager collectionManager) {
@@ -14,7 +15,7 @@ public class Update_by_id extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) {
+    public Response execute(String... args) {
         try {
             String[] arguments = args[0].split(" ",2);
             int id = Integer.parseInt(arguments[0]);
@@ -36,5 +37,6 @@ public class Update_by_id extends AbstractCommand{
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 }

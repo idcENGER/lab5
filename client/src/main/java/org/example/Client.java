@@ -1,11 +1,15 @@
 package org.example;
-import org.example.Utility.App;
+
+import org.example.Utility.Console;
 
 import java.io.IOException;
 
 public class Client {
-    public static void main(String[] args) throws IOException{
-        App.run(args[0]);
+
+    public static void main(String[] args) {
+        try {Console.run();}catch (IOException ex){
+            System.out.print("connection failed");
+        }
     }
 }
 

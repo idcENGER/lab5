@@ -1,9 +1,10 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CommandInvoker;
 
 
-public class Help extends AbstractCommand{
+public class Help extends model.commands.AbstractCommand {
 
     CommandInvoker commandInvoker;
 
@@ -13,7 +14,7 @@ public class Help extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) {
+    public Response execute(String... args) {
         try {
             if(args.length != 0){
                 throw new ArrayIndexOutOfBoundsException("Команда не поддерживает аргументы");
@@ -25,5 +26,6 @@ public class Help extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException exception){
             System.out.println(exception.getMessage());
         }
+        return null;
     }
 }

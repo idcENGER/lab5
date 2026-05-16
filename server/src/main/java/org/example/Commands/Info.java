@@ -1,8 +1,9 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
 
-public class Info extends AbstractCommand{
+public class Info extends model.commands.AbstractCommand {
 
     CollectionManager collectionManager;
 
@@ -12,7 +13,7 @@ public class Info extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) {
+    public Response execute(String... args) {
         try {
             if(args.length != 0){
                 throw new ArrayIndexOutOfBoundsException(getName() +":" + "Команда не поддерживает аргументы");
@@ -21,6 +22,7 @@ public class Info extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
 }

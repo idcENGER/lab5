@@ -1,9 +1,10 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
 import org.example.Utility.XmlHandler;
 
-public class Remove_by_id extends AbstractCommand{
+public class Remove_by_id extends model.commands.AbstractCommand {
     CollectionManager collectionManager;
 
     public Remove_by_id(CollectionManager collectionManager) {
@@ -12,7 +13,7 @@ public class Remove_by_id extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) {
+    public Response execute(String... args) {
         try {
             boolean Finalresult = false;
             StringBuilder message = new StringBuilder("Удалены музыкальные группы с id: ");
@@ -33,5 +34,6 @@ public class Remove_by_id extends AbstractCommand{
         }catch (IllegalArgumentException | IndexOutOfBoundsException ex){
             System.out.println("Неверный аргумент: " + ex.getMessage());
         }
+        return null;
     }
 }

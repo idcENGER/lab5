@@ -1,5 +1,6 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CommandInvoker;
 import org.example.Utility.XmlHandler;
 
@@ -8,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
 
-public class Execute_script extends AbstractCommand{
+public class Execute_script extends model.commands.AbstractCommand {
 
     CommandInvoker commandInvoker;
     private final HashSet<Path> scripts = new HashSet<>();
@@ -19,7 +20,7 @@ public class Execute_script extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) throws IOException {
+    public Response execute(String... args) throws IOException {
         try {
             if (args.length == 0){
                 throw new ArrayIndexOutOfBoundsException("Аргумент не может быть равен нулю");
@@ -28,7 +29,6 @@ public class Execute_script extends AbstractCommand{
             if (scripts.contains(path)){
                 System.out.println("Рекурсия заблокирована");
                 scripts.clear();
-                return;
             }
             scripts.add(path);
             String content = Files.readString(path);
@@ -50,5 +50,6 @@ public class Execute_script extends AbstractCommand{
         }catch (IOException exception){
             System.out.println("Не получилось открыть файл: "+exception.getMessage());
         }
+        return null;
     }
 }

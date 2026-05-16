@@ -1,6 +1,7 @@
 package org.example.Menegers;
 
-import org.example.Commands.AbstractCommand;
+import model.commands.AbstractCommand;
+import network.Response;
 import org.example.Utility.Console;
 import org.example.Utility.XmlHandler;
 
@@ -17,18 +18,19 @@ public class CommandInvoker {
         commandMap.put(command.getName(), command);
     }
 
-    public void execute(String commandName) throws NullPointerException, NoSuchFileException {
+    public Response execute(String commandName) throws NullPointerException, NoSuchFileException {
         try {
             if (Console.args.length > 1) {
-                commandMap.get(commandName).execute(XmlHandler.SpaceRemover(Console.args[1]));
+                return commandMap.get(commandName).execute(XmlHandler.SpaceRemover(Console.args[1]));
             }else {
-                commandMap.get(commandName).execute();
+                return commandMap.get(commandName).execute();
             }
         }catch (NullPointerException ex){
             System.out.println("Unsupported command");
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     public void executeScriptCommand(String commandName,String[] args) throws NullPointerException{

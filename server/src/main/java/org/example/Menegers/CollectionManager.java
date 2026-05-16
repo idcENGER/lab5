@@ -1,13 +1,17 @@
 package org.example.Menegers;
 
+import model.MusicBands.Coordinates;
+import model.MusicBands.MusicBand;
+import model.MusicBands.MusicGenre;
+import model.MusicBands.Person;
 import org.example.Exceptions.WrongArgumentException;
-import org.example.MusicBands.*;
+
 import org.example.Utility.ScannerParser;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
-import java.util.stream.Collectors;
+
 
 public class CollectionManager {
 

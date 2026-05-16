@@ -1,7 +1,7 @@
 package org.example.Utility;
 
+import model.MusicBands.*;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.*;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;

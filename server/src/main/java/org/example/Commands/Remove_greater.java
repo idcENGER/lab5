@@ -1,13 +1,14 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
+import model.MusicBands.*;
 import org.example.Utility.MusicBandBuilder;
 import org.example.Utility.XmlHandler;
 
 import java.util.Scanner;
 
-public class Remove_greater extends AbstractCommand{
+public class Remove_greater extends model.commands.AbstractCommand {
 
     CollectionManager collectionManager;
 
@@ -17,7 +18,7 @@ public class Remove_greater extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args){
+    public Response execute(String... args){
         try {
             MusicBand element;
             if (args.length ==0){
@@ -36,5 +37,6 @@ public class Remove_greater extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException | NullPointerException e){
             System.out.println(e.getMessage());
         }
+        return null;
     }
 }

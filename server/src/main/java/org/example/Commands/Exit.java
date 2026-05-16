@@ -1,13 +1,15 @@
 package org.example.Commands;
 
-public class Exit extends AbstractCommand{
+import network.Response;
+
+public class Exit extends model.commands.AbstractCommand {
 
     public Exit() {
         super("exit","завершить программу");
     }
 
     @Override
-    public void execute(String... args) {
+    public Response execute(String... args) {
         try {
             if(args.length != 0){
                 throw new ArrayIndexOutOfBoundsException("Команда не поддерживает аргументы");
@@ -17,6 +19,6 @@ public class Exit extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println(e.getMessage());
         }
-
+        return null;
     }
 }

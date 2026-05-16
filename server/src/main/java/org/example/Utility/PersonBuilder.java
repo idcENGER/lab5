@@ -1,6 +1,6 @@
 package org.example.Utility;
 
-import org.example.MusicBands.*;
+import model.MusicBands.*;
 
 import java.util.Scanner;
 public class PersonBuilder {

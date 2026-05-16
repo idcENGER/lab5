@@ -1,5 +1,6 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
 import org.example.Utility.ScannerParser;
 
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.file.Path;
 
-public class Save extends AbstractCommand{
+public class Save extends model.commands.AbstractCommand {
 
     Path path;
     CollectionManager collectionManager;
@@ -20,7 +21,7 @@ public class Save extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) throws ClassNotFoundException {
+    public Response execute(String... args) throws ClassNotFoundException {
         String data = ScannerParser.SerializeXML(collectionManager.getCollections());
         try{
             if(args.length != 0){
@@ -33,5 +34,6 @@ public class Save extends AbstractCommand{
         } catch (IOException | ArrayIndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
+        return null;
     }
 }

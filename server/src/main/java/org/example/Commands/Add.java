@@ -3,19 +3,19 @@ package org.example.Commands;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
+import model.MusicBands.MusicBand;
+import model.MusicBands.Person;
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
-import org.example.MusicBands.Person;
 import org.example.Utility.MusicBandBuilder;
-import org.example.Utility.XmlHandler;
+import utility.XmlHandler;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 
-public class Add extends AbstractCommand{
+public class Add extends model.commands.AbstractCommand {
     CollectionManager collectionManager;
 
     public Add(CollectionManager collectionManager) {
@@ -25,15 +25,15 @@ public class Add extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) throws IOException, CannotResolveClassException, ConversionException {
+    public Response execute(String... args) throws IOException, CannotResolveClassException, ConversionException {
         try {
             if (args.length == 1){
                 MusicBand musicBand = null;
-                try {
-                    musicBand = XmlHandler.DeserializeMusicBandXMLXStream(args[0],collectionManager);
+                /*try {
+                    musicBand = XmlHandler.deserialize(args[0],collectionManager);
                 }catch (StreamException streamException){
                     System.out.println(streamException.getMessage());
-                }
+                }*/
                 if (musicBand != null){
                     boolean PassportIdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
                     boolean IdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
@@ -86,5 +86,6 @@ public class Add extends AbstractCommand{
         }catch (IllegalArgumentException | NullPointerException | StreamException ex){
             System.out.println("Музыкальная группа не добавлена: " + ex.getMessage());
         }
+        return null;
     }
 }

@@ -1,6 +1,6 @@
 package org.example.Utility;
 
-import org.example.MusicBands.*;
+import model.MusicBands.*;
 
 import java.io.File;
 import java.io.IOException;

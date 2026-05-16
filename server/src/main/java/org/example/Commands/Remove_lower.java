@@ -1,14 +1,15 @@
 package org.example.Commands;
 
+import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.MusicBands.MusicBand;
+import model.MusicBands.*;
 import org.example.Utility.MusicBandBuilder;
 import org.example.Utility.XmlHandler;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Remove_lower extends AbstractCommand{
+public class Remove_lower extends model.commands.AbstractCommand {
 
     CollectionManager collectionManager;
 
@@ -18,7 +19,7 @@ public class Remove_lower extends AbstractCommand{
     }
 
     @Override
-    public void execute(String... args) throws IOException, ClassNotFoundException {
+    public Response execute(String... args) throws IOException, ClassNotFoundException {
         try {
             MusicBand element;
             if (args.length ==0){
@@ -37,5 +38,6 @@ public class Remove_lower extends AbstractCommand{
         }catch (ArrayIndexOutOfBoundsException | NullPointerException exception){
             System.out.println(exception.getMessage());
         }
+        return null;
     }
 }
