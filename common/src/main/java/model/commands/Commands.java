@@ -10,9 +10,9 @@ public enum Commands {
     execute,
     fcn,
     fsn,
-    rbi,
-    rbg,
     ubi,
     rml,
+    rmg,
+    rmi,
     group
 }

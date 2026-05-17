@@ -34,8 +34,7 @@ public class Console {
                 utility.XmlHandler.AllSpaceRemover(commandName);
                 try {
                     Commands.valueOf(commandName);
-                    System.out.println(client.request(command));
-
+                    System.out.print(client.request(command));
                 } catch (IllegalArgumentException e) {
                     System.out.println("Неверное имя команды");
                 }

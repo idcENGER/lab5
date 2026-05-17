@@ -18,8 +18,9 @@ public class CommandInvoker {
         commandMap.put(command.getName(), command);
     }
 
-    public Response execute(String commandName) throws NullPointerException, NoSuchFileException {
-        try {
+    public Response execute(String commandName) throws IOException, ClassNotFoundException {
+        return commandMap.get(commandName).execute();}
+        /*try {
             if (Console.args.length > 1) {
                 return commandMap.get(commandName).execute(XmlHandler.SpaceRemover(Console.args[1]));
             }else {
@@ -45,7 +46,7 @@ public class CommandInvoker {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-    }
+    }*/
 
     public Map<String, AbstractCommand> getCommandMap(){
         return commandMap;

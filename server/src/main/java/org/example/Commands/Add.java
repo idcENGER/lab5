@@ -45,7 +45,7 @@ public class Add extends model.commands.AbstractCommand {
                         System.out.println("ID");
                     }else{
                         collectionManager.add(musicBand);
-                        System.out.println("Музыкальная группа успешно добавлена");
+                        return new Response("Музыкальная группа успешно добавлена");
                     }
                 }else {
                     throw new NullPointerException("Ошибка парсинга");
@@ -63,7 +63,7 @@ public class Add extends model.commands.AbstractCommand {
                         System.out.println("ID");
                     }else{
                         collectionManager.add(musicBand);
-                        System.out.println("Музыкальная группа успешно добавлена");
+                        return new Response("Музыкальная группа успешно добавлена");
                     }
 
                 }else{

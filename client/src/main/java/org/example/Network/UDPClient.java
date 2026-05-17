@@ -1,10 +1,13 @@
 package org.example.Network;
 
+import network.Request;
 import network.Response;
+import utility.XmlHandler;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 
@@ -14,51 +17,57 @@ import java.nio.channels.DatagramChannel;
 
 public class UDPClient {
 
-    private ByteBuffer sendBuffer;
-    private ByteBuffer receiveBuffer;
     private final int BUFFER_SIZE = 1024;
+    private final long TIME_OUT = 5000;
     private final DatagramChannel channel;
-    private final InetSocketAddress serverAddress;
+    private final SocketAddress address;
 
     public UDPClient(InetAddress addr, int port) throws IOException {
-        this.serverAddress = new InetSocketAddress(addr, port);
-        this.channel = DatagramChannel.open().bind(null).connect(serverAddress);
+        this.address = new InetSocketAddress(addr, port);
+        this.channel = DatagramChannel.open();
         this.channel.configureBlocking(false);
-        sendBuffer = ByteBuffer.allocate(BUFFER_SIZE);
-        receiveBuffer = ByteBuffer.allocate(BUFFER_SIZE);
     }
 
 
-    public Response request(String command) throws IOException {
+    public Response request(String command) throws IOException, InterruptedException {
+        ByteBuffer sendBuffer = ByteBuffer.allocate(BUFFER_SIZE);
         byte[] require = command.getBytes();
         sendBuffer.clear();
         sendBuffer.put(require);
         sendBuffer.flip();
-        channel.send(sendBuffer,serverAddress);
-        receiveBuffer.clear();
-        InetSocketAddress serverSocket = (InetSocketAddress) channel.receive(receiveBuffer);
-        if (serverSocket != null){
-            receiveBuffer.flip();
-            byte[] data = new byte[receiveBuffer.remaining()];
-            receiveBuffer.get(data);
-            String response = new String(data);
-            return new Response(response);
-        }else return null;
-    }
+        channel.send(sendBuffer,address);
 
-    public ByteBuffer getSendBuffer() {
-        return sendBuffer;
-    }
+        ByteBuffer readBuffer = ByteBuffer.allocate(BUFFER_SIZE);
+        long startTime = System.currentTimeMillis();
+        StringBuilder response = new StringBuilder();
+        boolean received = false;
 
-    public void setSendBuffer(ByteBuffer sendBuffer) {
-        this.sendBuffer = sendBuffer;
-    }
+        while (!received){
+            readBuffer.clear();
+            SocketAddress address = channel.receive(readBuffer);
+            if (address != null){
+                readBuffer.flip();
+                byte[] data = new byte[readBuffer.remaining()];
+                readBuffer.get(data);
+                response.append(new String(data));
+                if (data[data.length -1] == 1){
+                    received = true;
+                }
+            }
 
-    public ByteBuffer getReceiveBuffer() {
-        return receiveBuffer;
-    }
+            if (System.currentTimeMillis() - startTime > TIME_OUT){
+                System.out.println("превышено время ожидания");
+                return null;
+            }
 
-    public void setReceiveBuffer(ByteBuffer receiveBuffer) {
-        this.receiveBuffer = receiveBuffer;
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return null;
+            }
+        }
+        return (Response) XmlHandler.deserialize(response.toString());
+
     }
 }

@@ -6,6 +6,7 @@ public abstract class AbstractCommand implements Command {
 
     private final String name;
     private final String description;
+    private Object arguments;
 
     public AbstractCommand(String name, String description) {
         this.name = name;
@@ -43,6 +44,7 @@ public abstract class AbstractCommand implements Command {
             return "Command{" +
                     "name='" + name + '\'' +
                     ", description='" + description + '\'' +
+                    ", arguments='" + arguments + '\'' +
                     '}';
         }
     }

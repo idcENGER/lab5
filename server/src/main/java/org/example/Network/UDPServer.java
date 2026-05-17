@@ -1,12 +1,16 @@
 package org.example.Network;
 
 import org.example.Menegers.CommandInvoker;
+import utility.BufferHandler;
 import utility.XmlHandler;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
+import java.util.Arrays;
+import java.util.List;
 
 public class UDPServer {
 
@@ -32,20 +36,34 @@ public class UDPServer {
                     byte[] data = new byte[buffer.remaining()];
                     buffer.get(data);
                     String message = new String(data);
-                    System.out.println(sender + ":" + message);
                     buffer.clear();
-                    buffer.flip();
-                    channel.send(buffer, sender);
+                    byte[] resp = response(message).getBytes();
+                    List<byte[]> chunks = BufferHandler.getPackets(resp,BUFFER_SIZE);
+                    for (int i = 0; i< chunks.size(); i++){
+                        if(i == chunks.size() -1){
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            baos.write(chunks.get(i));
+                            baos.write(1);
+                            byte[] chunk = baos.toByteArray();
+                            buffer.put(chunk);
+                        }else{
+                        byte[] chunk = chunks.get(i);
+                        buffer.put(chunk);
+                        }
+                        buffer.flip();
+                        channel.send(buffer, sender);
+                        buffer.clear();
+                    }
                 }
                 Thread.sleep(100);
             }
 
-        } catch (IOException | InterruptedException e) {
+        } catch (IOException | InterruptedException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String response(String require) throws IOException {
-        return XmlHandler.serialize(commandInvoker.execute(require));
+    public String response(String require) throws IOException, ClassNotFoundException {
+        return XmlHandler.serialize(this.commandInvoker.execute(require));
     }
 }

@@ -8,17 +8,13 @@ import java.nio.file.Path;
 
 public class Server {
 
-    public static CommandInvoker commandInvoker;
-    public static CollectionManager collectionManager;
-
     public static void main(String[] args){
         if (args.length == 0) {
             System.out.println("Ошибка: Имя файла должно передаваться через аргумент командной строки.");
             System.exit(0);
         }
-        collectionManager = new CollectionManager();
-        commandInvoker = new CommandInvoker();
-        UDPServer server = new UDPServer(commandInvoker,24868,1024);
+        CollectionManager collectionManager = new CollectionManager();
+        CommandInvoker commandInvoker = new CommandInvoker();
         commandInvoker.register(new Help(commandInvoker));
         commandInvoker.register(new Info(collectionManager));
         commandInvoker.register(new Clear(collectionManager));
@@ -35,6 +31,7 @@ public class Server {
         commandInvoker.register(new Remove_greater(collectionManager));
         commandInvoker.register(new Remove_lower(collectionManager));
         commandInvoker.register(new Execute_script(commandInvoker));
+        UDPServer server = new UDPServer(commandInvoker,24868,1024);
     }
 }
 

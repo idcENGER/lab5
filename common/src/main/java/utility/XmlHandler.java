@@ -10,6 +10,7 @@ import model.MusicBands.MusicBand;
 import com.thoughtworks.xstream.XStream;
 import model.commands.AbstractCommand;
 import network.Request;
+import network.Response;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,11 +26,11 @@ public class XmlHandler {
         return xStream.toXML(object);
     }
 
-    public static Request deserialize(String string){
+    public static Object deserialize(String string){
         XStream xStream = new XStream();
-        xStream.allowTypes(new Class[] {MusicBand.class, AbstractCommand.class, Request.class});
+        xStream.allowTypes(new Class[] {MusicBand.class, AbstractCommand.class, Request.class, Response.class});
         xStream.alias("command",AbstractCommand.class);
-        return (Request) xStream.fromXML(string);
+        return xStream.fromXML(string);
     }
 
     public static String SerializeXMLXStream(Object object) throws ClassNotFoundException {
