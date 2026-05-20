@@ -1,18 +1,24 @@
 package network;
 
-import model.commands.AbstractCommand;
-
 public class Request {
 
-    AbstractCommand request;
+    private final String command;
 
-    public Request(AbstractCommand request){
-        this.request = request;
+    public Request(String command, String[] arguments){
+        this.command = command;
+    }
+
+    public Request(String command){
+        this.command = command;
+    }
+
+    public String getCommand() {
+        return command;
     }
 
     @Override
     public String toString(){
-        return this.request.toString();
+        return this.command;
     }
 
 }

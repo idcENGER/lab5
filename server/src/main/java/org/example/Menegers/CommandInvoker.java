@@ -2,7 +2,6 @@ package org.example.Menegers;
 
 import model.commands.AbstractCommand;
 import network.Response;
-import org.example.Utility.Console;
 import org.example.Utility.XmlHandler;
 
 import java.io.IOException;

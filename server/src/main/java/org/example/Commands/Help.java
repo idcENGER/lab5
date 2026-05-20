@@ -16,19 +16,11 @@ public class Help extends AbstractCommand {
 
     @Override
     public Response execute(String... args) {
-        try {
-            if(args.length != 0){
-                throw new ArrayIndexOutOfBoundsException("Команда не поддерживает аргументы");
-            }
-            StringBuilder s = new StringBuilder();
-            for (var value : this.commandInvoker.getCommandMap().values()) {
-                s.append(value.getDescription()+"\n");
-
-            }
-            return new Response(s.toString());
-        }catch (ArrayIndexOutOfBoundsException exception){
-            System.out.println(exception.getMessage());
+        StringBuilder s = new StringBuilder();
+        for (var value : this.commandInvoker.getCommandMap().values()) {
+            s.append(value.getDescription()).append("\n");
         }
-        return null;
+        s.setLength(s.length() - 1);
+        return new Response(s.toString());
     }
 }

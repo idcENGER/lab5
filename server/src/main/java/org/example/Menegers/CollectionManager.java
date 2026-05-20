@@ -34,7 +34,7 @@ public class CollectionManager {
         return collections.size();
     }
 
-    public boolean recoverCollection(String path) throws IOException,NullPointerException {
+    public void recoverCollection(String path) throws IOException,NullPointerException {
         HashSet<MusicBand> data = ScannerParser.DeserializeCollectionXML(path);
         boolean IdIsUnique = data.stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
         boolean PassportIdIsUnique = data.stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
@@ -45,7 +45,6 @@ public class CollectionManager {
         }else {
             System.out.println("ID в коллекции не уникальны");
         }
-        return IdIsUnique && PassportIdIsUnique;
     }
 
     public boolean inCollection(MusicBand musicBand){

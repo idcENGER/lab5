@@ -1,6 +1,5 @@
 package org.example.Commands;
 
-import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import network.Response;
 import org.example.Menegers.CollectionManager;
 import model.MusicBands.*;
@@ -22,11 +21,8 @@ public class Group_counting_by_creation_date extends model.commands.AbstractComm
 
     @Override
     public Response execute(String... args) {
-        try {
-            if(args.length != 0){
-                throw new ArrayIndexOutOfBoundsException("Команда не поддерживает аргументы");
-            }
-            HashSet<MusicBand> collection = (HashSet<MusicBand>) collectionManager.getCollections().clone();
+        StringBuilder s = new StringBuilder();
+        HashSet<MusicBand> collection = (HashSet<MusicBand>) collectionManager.getCollections().clone();
         Iterator<MusicBand> iterator = collection.iterator();
         ArrayList<ZonedDateTime> date = new ArrayList<>();
         while (iterator.hasNext()){
@@ -40,12 +36,10 @@ public class Group_counting_by_creation_date extends model.commands.AbstractComm
                     }
                 }
                 date.add(creationDate);
-                System.out.println(creationDate + "->" + counter);
+                s.append(creationDate).append("->").append(counter).append("\n");
             }
-            }
-        }catch (CannotResolveClassException ex){
-            System.out.println(ex.getMessage());
         }
-        return null;
+        s.setLength(s.length() - 1);
+        return new Response(s.toString());
     }
 }

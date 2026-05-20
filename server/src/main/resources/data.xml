@@ -1,0 +1,25 @@
+<musicBands>
+    <MusicBand>
+        <id>1</id>
+        <name>Pink Floyd</name>
+        <coordinates>
+            <x>100</x>
+            <y>250.5</y>
+        </coordinates>
+        <creationDate>2024-03-15T10:30:00Z</creationDate>
+        <numberOfParticipants>5</numberOfParticipants>
+        <establishmentDate>1965-10-15</establishmentDate>
+        <genre>PROGRESSIVE_ROCK</genre>
+        <frontMan>
+            <name>David Gilmour</name>
+            <height>175.5</height>
+            <passportID>AB1234567</passportID>
+            <hairColor>BLUE</hairColor>
+            <location>
+                <x>55.7558</x>
+                <y>3761750</y>
+                <z>156.0</z>
+            </location>
+        </frontMan>
+    </MusicBand>
+</musicBands>

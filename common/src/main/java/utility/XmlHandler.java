@@ -33,14 +33,6 @@ public class XmlHandler {
         return xStream.fromXML(string);
     }
 
-    public static String SerializeXMLXStream(Object object) throws ClassNotFoundException {
-        Class<?> musicBand = Class.forName("model.MusicBands.MusicBand");
-        XStream xStream = new XStream();
-        xStream.alias("Collection", Set.class);
-        xStream.alias("MusicBand", musicBand);
-        return xStream.toXML(object);
-    }
-
     public static String SpaceRemover(String message){
         message = message.replace("\t"," ");
         return message.strip();

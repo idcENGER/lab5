@@ -1,3 +1,4 @@
+/*
 package org.example.Commands;
 
 import network.Response;
@@ -53,3 +54,4 @@ public class Execute_script extends model.commands.AbstractCommand {
         return null;
     }
 }
+*/

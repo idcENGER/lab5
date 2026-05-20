@@ -9,24 +9,18 @@ import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
-import java.util.Arrays;
 import java.util.List;
 
 public class UDPServer {
 
     private final CommandInvoker commandInvoker;
-    private final InetSocketAddress address;
-    private final int PORT;
-    private final int BUFFER_SIZE;
 
     public UDPServer(CommandInvoker commandInvoker,int port,int buff){
         this.commandInvoker = commandInvoker;
-        this.PORT = port;
-        this.BUFFER_SIZE = buff;
         try (DatagramChannel channel = DatagramChannel.open()){
-            address = new InetSocketAddress(PORT);
+            InetSocketAddress address = new InetSocketAddress(port);
             channel.bind(address);
-            ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+            ByteBuffer buffer = ByteBuffer.allocate(buff);
             channel.configureBlocking(false);
             while (true) {
                 buffer.clear();
@@ -38,7 +32,7 @@ public class UDPServer {
                     String message = new String(data);
                     buffer.clear();
                     byte[] resp = response(message).getBytes();
-                    List<byte[]> chunks = BufferHandler.getPackets(resp,BUFFER_SIZE);
+                    List<byte[]> chunks = BufferHandler.getPackets(resp, buff);
                     for (int i = 0; i< chunks.size(); i++){
                         if(i == chunks.size() -1){
                             ByteArrayOutputStream baos = new ByteArrayOutputStream();

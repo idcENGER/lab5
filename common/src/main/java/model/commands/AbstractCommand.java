@@ -2,7 +2,7 @@ package model.commands;
 
 import java.util.Objects;
 
-public abstract class AbstractCommand implements Command {
+public abstract class AbstractCommand implements Command{
 
     private final String name;
     private final String description;

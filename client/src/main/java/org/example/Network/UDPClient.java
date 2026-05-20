@@ -1,5 +1,7 @@
 package org.example.Network;
 
+import model.commands.AbstractCommand;
+import model.commands.Command;
 import network.Request;
 import network.Response;
 import utility.XmlHandler;
@@ -29,7 +31,8 @@ public class UDPClient {
     }
 
 
-    public Response request(String command) throws IOException, InterruptedException {
+    public Response sendRequest(Request request) throws IOException, InterruptedException {
+        String command = request.getCommand();
         ByteBuffer sendBuffer = ByteBuffer.allocate(BUFFER_SIZE);
         byte[] require = command.getBytes();
         sendBuffer.clear();
