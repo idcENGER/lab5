@@ -5,6 +5,5 @@ public enum ArglessCommands {
     show,
     clear,
     info,
-    add,
     group
 }

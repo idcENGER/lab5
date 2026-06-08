@@ -2,11 +2,11 @@ package org.example.Commands;
 
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.Utility.MusicBandBuilder;
-import org.example.Utility.XmlHandler;
 import model.MusicBands.*;
+import utility.MusicBandBuilder;
+import utility.XmlHandler;
 
-public class Update_by_id extends model.commands.AbstractCommand {
+public class Update_by_id extends model.commands.Command {
     CollectionManager collectionManager;
 
     public Update_by_id(CollectionManager collectionManager) {
@@ -26,10 +26,10 @@ public class Update_by_id extends model.commands.AbstractCommand {
                     MusicBandBuilder.MusicBandUpdater(musicBand);
                 }
             }else {
-                MusicBand newMusicBand = XmlHandler.DeserializeMusicBandXMLXStream(arguments[1],collectionManager);
+                //MusicBand newMusicBand = XmlHandler.DeserializeMusicBandXMLXStream(arguments[1],collectionManager);
                 if(musicBand != null){
                     System.out.println("Обновление музыкальной группы");
-                    MusicBandBuilder.RawMusicBandUpdater(musicBand,newMusicBand);
+                  //  MusicBandBuilder.RawMusicBandUpdater(musicBand,newMusicBand);
                 }else {
                     throw new NullPointerException("Ошибка парсинга");
                 }

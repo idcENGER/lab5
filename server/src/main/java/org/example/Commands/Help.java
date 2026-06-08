@@ -1,11 +1,11 @@
 package org.example.Commands;
 
-import model.commands.AbstractCommand;
+import model.commands.Command;
 import network.Response;
 import org.example.Menegers.CommandInvoker;
 
 
-public class Help extends AbstractCommand {
+public class Help extends Command {
 
     CommandInvoker commandInvoker;
 

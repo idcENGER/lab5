@@ -3,12 +3,12 @@ package org.example.Commands;
 import network.Response;
 import org.example.Menegers.CollectionManager;
 import model.MusicBands.*;
-import org.example.Utility.MusicBandBuilder;
-import org.example.Utility.XmlHandler;
+import utility.XmlHandler;
+import utility.MusicBandBuilder;
 
 import java.util.Scanner;
 
-public class Remove_greater extends model.commands.AbstractCommand {
+public class Remove_greater extends model.commands.Command {
 
     CollectionManager collectionManager;
 
@@ -22,18 +22,17 @@ public class Remove_greater extends model.commands.AbstractCommand {
         try {
             MusicBand element;
             if (args.length ==0){
-                element = MusicBandBuilder.buildMusicBandByNoArgs(null);
+                element = MusicBandBuilder.buildMusicBandByNoArgs();
             }else {
-                element = XmlHandler.DeserializeMusicBandXMLXStream(args[0],collectionManager);
+                /*element = XmlHandler.deserialize();
                 if (element == null){
                     throw new NullPointerException("Ошибка парсинга");
-                }
+                }*/
             }
             Scanner scanner = new Scanner(System.in);
-            System.out.println(element);
             System.out.print("Введите критерий для rmg(скопируйте параметр, написанный большими буквами): ");
             String param = scanner.nextLine();
-            collectionManager.getCollections().retainAll(collectionManager.getMusicBandsByParam(element,param));
+            //collectionManager.getCollections().retainAll(collectionManager.getMusicBandsByParam(element,param));
         }catch (ArrayIndexOutOfBoundsException | NullPointerException e){
             System.out.println(e.getMessage());
         }

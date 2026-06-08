@@ -2,7 +2,7 @@ package org.example.Commands;
 
 import network.Response;
 
-public class Exit extends model.commands.AbstractCommand {
+public class Exit extends model.commands.Command {
 
     public Exit() {
         super("exit","завершить программу");

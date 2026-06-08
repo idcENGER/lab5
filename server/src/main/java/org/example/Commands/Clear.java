@@ -3,7 +3,9 @@ package org.example.Commands;
 import network.Response;
 import org.example.Menegers.CollectionManager;
 
-public class Clear extends model.commands.AbstractCommand {
+import java.io.IOException;
+
+public class Clear extends model.commands.Command {
 
     CollectionManager collectionManager;
 
@@ -13,8 +15,9 @@ public class Clear extends model.commands.AbstractCommand {
     }
 
     @Override
-    public Response execute(String... args) {
+    public Response execute(String... args) throws IOException, ClassNotFoundException {
         collectionManager.clear();
+        collectionManager.save();
         return new Response("коллекция очищена");
     }
 }

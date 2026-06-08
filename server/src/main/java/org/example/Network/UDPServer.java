@@ -1,63 +1,63 @@
 package org.example.Network;
 
+import network.Request;
 import org.example.Menegers.CommandInvoker;
 import utility.BufferHandler;
 import utility.XmlHandler;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.*;
-import java.nio.ByteBuffer;
-import java.nio.channels.DatagramChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+
 
 public class UDPServer {
 
     private final CommandInvoker commandInvoker;
+    private final int BUFFER_SIZE = 1024;
 
-    public UDPServer(CommandInvoker commandInvoker,int port,int buff){
+    public UDPServer(CommandInvoker commandInvoker,int port){
         this.commandInvoker = commandInvoker;
-        try (DatagramChannel channel = DatagramChannel.open()){
-            InetSocketAddress address = new InetSocketAddress(port);
-            channel.bind(address);
-            ByteBuffer buffer = ByteBuffer.allocate(buff);
-            channel.configureBlocking(false);
+        try (DatagramSocket socket = new DatagramSocket(port)){
+            socket.setSoTimeout(1000);
+            byte[] buffer = new byte[BUFFER_SIZE];
+            DatagramPacket requestPacket = new DatagramPacket(buffer,BUFFER_SIZE);
             while (true) {
-                buffer.clear();
-                SocketAddress sender = channel.receive(buffer);
-                if (sender != null) {
-                    buffer.flip();
-                    byte[] data = new byte[buffer.remaining()];
-                    buffer.get(data);
-                    String message = new String(data);
-                    buffer.clear();
-                    byte[] resp = response(message).getBytes();
-                    List<byte[]> chunks = BufferHandler.getPackets(resp, buff);
-                    for (int i = 0; i< chunks.size(); i++){
-                        if(i == chunks.size() -1){
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            baos.write(chunks.get(i));
-                            baos.write(1);
-                            byte[] chunk = baos.toByteArray();
-                            buffer.put(chunk);
-                        }else{
-                        byte[] chunk = chunks.get(i);
-                        buffer.put(chunk);
-                        }
-                        buffer.flip();
-                        channel.send(buffer, sender);
-                        buffer.clear();
+                try {
+                    socket.receive(requestPacket);
+                    String message = new String(
+                            requestPacket.getData(),
+                            requestPacket.getOffset(),
+                            requestPacket.getLength(),
+                            StandardCharsets.UTF_8
+                    );
+                    Request request = (Request) XmlHandler.deserialize(message);
+                    String response = response(request);
+                    List<byte[]> packets = BufferHandler.getPackets(response.getBytes());
+                    for (byte[] packet : packets){
+                        DatagramPacket sendPacket = new DatagramPacket(
+                                packet,
+                                packet.length,
+                                requestPacket.getAddress(),
+                                requestPacket.getPort()
+                        );
+                        socket.send(sendPacket);
                     }
+                }catch (SocketTimeoutException ignore){
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    requestPacket.setLength(BUFFER_SIZE);
                 }
-                Thread.sleep(100);
             }
 
-        } catch (IOException | InterruptedException | ClassNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String response(String require) throws IOException, ClassNotFoundException {
-        return XmlHandler.serialize(this.commandInvoker.execute(require));
+    public String response(Request request) throws IOException, ClassNotFoundException {
+        if (request.getArguments() == null){return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(),null));}
+        return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), request.getArguments()));
     }
 }

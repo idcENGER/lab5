@@ -1,7 +1,6 @@
-package org.example.Utility;
+package utility;
 
 import model.MusicBands.*;
-import org.example.Menegers.CollectionManager;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
@@ -12,13 +11,11 @@ import java.util.Scanner;
 public class MusicBandBuilder {
     static Scanner scanner = new Scanner(System.in);
 
-    public static MusicBand buildMusicBandByNoArgs(CollectionManager collectionManager) throws NullPointerException{
+    public static MusicBand buildMusicBandByNoArgs() throws NullPointerException{
         try {
             int id = 0;
             ZonedDateTime creationDate = ZonedDateTime.now();
             LocalDate establishmentDate = LocalDate.now();
-            if (collectionManager != null) {
-                id = collectionManager.getSize() + 1;}
             return new MusicBand(id,askName(), askCoordinates(), creationDate, askNumberOfParticipants(),
                     establishmentDate,askGenre(),askFrontMan(true,null));
         } catch (NullPointerException ex){
@@ -106,7 +103,7 @@ public class MusicBandBuilder {
         }
     }
 
-    public static MusicBand buildMusicBandByParams(CollectionManager collectionManager, ArrayList<String> params){
+    public static MusicBand buildMusicBandByParams(ArrayList<String> params){
         try {
             String[] c = XmlHandler.SpaceRemover(params.get(1)).split(",");
             String[] l = XmlHandler.SpaceRemover(params.get(8)).split(",");
@@ -122,7 +119,7 @@ public class MusicBandBuilder {
                     location
             );
             return new MusicBand(
-                    collectionManager.getSize() + 1,
+                    0,
                     XmlHandler.SpaceRemover(params.get(0)),
                     coordinates,
                     ZonedDateTime.now(),

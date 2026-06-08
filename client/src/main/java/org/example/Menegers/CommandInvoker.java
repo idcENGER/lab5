@@ -1,6 +1,6 @@
 package org.example.Menegers;
 
-import model.commands.AbstractCommand;
+import model.commands.Command;
 import org.example.Utility.Console;
 import utility.XmlHandler;
 
@@ -11,9 +11,9 @@ import java.util.Map;
 
 public class CommandInvoker {
 
-    private static final Map<String, AbstractCommand> commandMap = new HashMap<>();
+    private static final Map<String, Command> commandMap = new HashMap<>();
 
-    public void register(AbstractCommand command){
+    public void register(Command command){
         commandMap.put(command.getName(), command);
     }
 
@@ -49,7 +49,7 @@ public class CommandInvoker {
         }
     }
 
-    public Map<String, AbstractCommand> getCommandMap(){
+    public Map<String, Command> getCommandMap(){
         return commandMap;
     }
 

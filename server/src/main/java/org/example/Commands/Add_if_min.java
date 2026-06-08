@@ -4,13 +4,13 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.Utility.MusicBandBuilder;
-import org.example.Utility.XmlHandler;
+import utility.MusicBandBuilder;
+import utility.XmlHandler;
 import model.MusicBands.*;
 
 import java.util.Scanner;
 
-public class Add_if_min extends model.commands.AbstractCommand {
+public class Add_if_min extends model.commands.Command {
 
     CollectionManager collectionManager;
 
@@ -21,7 +21,7 @@ public class Add_if_min extends model.commands.AbstractCommand {
 
     @Override
     public Response execute(String... args) throws CannotResolveClassException, ConversionException {
-        try {
+        /*try {
             if (args.length > 1){
                 throw new ArrayIndexOutOfBoundsException("Неверное количество аргументов");
             }
@@ -29,7 +29,7 @@ public class Add_if_min extends model.commands.AbstractCommand {
             if (args.length == 0){
                 newMusicBand = MusicBandBuilder.buildMusicBandByNoArgs(null);
             } else {
-                newMusicBand = XmlHandler.DeserializeMusicBandXMLXStream(args[0],collectionManager);
+                newMusicBand = XmlHandler.deserialize(args[0],collectionManager);
             }
             if (newMusicBand != null) {
                 newMusicBand.setId(collectionManager.getCollections().size()+1);
@@ -46,7 +46,7 @@ public class Add_if_min extends model.commands.AbstractCommand {
             }
         }catch (ArrayIndexOutOfBoundsException | NullPointerException ex){
             System.out.println(ex.getMessage());
-        }
+        }*/
         return null;
     }
 }

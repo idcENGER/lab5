@@ -6,17 +6,23 @@ import java.util.List;
 
 public class BufferHandler {
 
-    public static List<byte[]> getPackets(byte[] data,int chunkSize){
-        if (chunkSize <= 0){
-            throw new IllegalArgumentException("Размер должен быть положительным");
-        }
+    private static final int MAX_SIZE = 1017;
 
-        List<byte[]> chunks = new ArrayList<>();
 
-        for (int i = 0; i < data.length; i+=chunkSize){
-            int end = Math.min(i+chunkSize,data.length);
-            chunks.add(Arrays.copyOfRange(data,i,end));
+    public static List<byte[]> getPackets(byte[] data){
+
+        List<byte[]> packets = new ArrayList<>();
+
+        int totalLength = data.length;
+        int offset = 0;
+
+        while (offset < totalLength){
+            int length = Math.min(MAX_SIZE,totalLength - offset);
+            byte[] chunk = new byte[length];
+            System.arraycopy(data,offset,chunk,0,length);
+            packets.add(chunk);
+            offset+=length;
         }
-        return chunks;
+        return packets;
     }
 }

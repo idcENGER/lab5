@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.file.Path;
 
-public class Save extends model.commands.AbstractCommand {
+public class Save extends model.commands.Command {
 
     Path path;
     CollectionManager collectionManager;
@@ -21,7 +21,7 @@ public class Save extends model.commands.AbstractCommand {
     }
 
     @Override
-    public Response execute(String... args) throws ClassNotFoundException {
+    public Response execute(String... args) {
         String data = ScannerParser.SerializeXML(collectionManager.getCollections());
         try{
             if(args.length != 0){

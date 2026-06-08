@@ -15,13 +15,20 @@ import java.util.HashSet;
 
 public class CollectionManager {
 
+    private CommandInvoker commandInvoker;
+
     private final java.time.ZonedDateTime date = ZonedDateTime.now();
     private final HashSet<MusicBand> collections = new HashSet<>();
+
+    public CollectionManager(CommandInvoker commandInvoker){
+        this.commandInvoker = commandInvoker;
+    }
 
 
     public void add(MusicBand musicBand){
         collections.add(musicBand);
     }
+
     public void clear(){
         collections.clear();
     }
@@ -34,16 +41,26 @@ public class CollectionManager {
         return collections.size();
     }
 
+    public void save() throws IOException, ClassNotFoundException {
+        commandInvoker.execute("save",null);
+    }
+
     public void recoverCollection(String path) throws IOException,NullPointerException {
         HashSet<MusicBand> data = ScannerParser.DeserializeCollectionXML(path);
         boolean IdIsUnique = data.stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
         boolean PassportIdIsUnique = data.stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
         if (IdIsUnique && PassportIdIsUnique) {
             collections.addAll(data);
-        }else if (!PassportIdIsUnique){
+        } else if (!PassportIdIsUnique & !IdIsUnique) {
             System.out.println("Паспортные данные в коллекции не уникальны");
+            System.out.println("ID в коллекции не уникальны");
+            System.exit(0);
+        } else if (!PassportIdIsUnique){
+            System.out.println("Паспортные данные в коллекции не уникальны");
+            System.exit(0);
         }else {
             System.out.println("ID в коллекции не уникальны");
+            System.exit(0);
         }
     }
 

@@ -1,21 +1,18 @@
 package org.example.Commands;
 
 import com.thoughtworks.xstream.converters.ConversionException;
-import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import model.MusicBands.MusicBand;
 import model.MusicBands.Person;
+import model.commands.Command;
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.Utility.MusicBandBuilder;
 import utility.XmlHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
-public class Add extends model.commands.AbstractCommand {
+public class Add extends Command {
     CollectionManager collectionManager;
 
     public Add(CollectionManager collectionManager) {
@@ -25,66 +22,23 @@ public class Add extends model.commands.AbstractCommand {
     }
 
     @Override
-    public Response execute(String... args) throws IOException, CannotResolveClassException, ConversionException {
-        try {
-            if (args.length == 1){
-                MusicBand musicBand = null;
-                /*try {
-                    musicBand = XmlHandler.deserialize(args[0],collectionManager);
-                }catch (StreamException streamException){
-                    System.out.println(streamException.getMessage());
-                }*/
-                if (musicBand != null){
-                    boolean PassportIdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
-                    boolean IdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
-                    if (collectionManager.inCollection(musicBand)){
-                        System.out.println("Такая музыкальная группа уже есть");
-                    }else if(!PassportIdIsUnique){
-                        System.out.println("Неверные паспортные данные: такие данные уже есть");
-                    }else if(!IdIsUnique){
-                        System.out.println("ID");
-                    }else{
-                        collectionManager.add(musicBand);
-                        return new Response("Музыкальная группа успешно добавлена");
-                    }
-                }else {
-                    throw new NullPointerException("Ошибка парсинга");
-                }
-            }else{
-                if (args.length == 0){
-                    MusicBand musicBand = MusicBandBuilder.buildMusicBandByNoArgs(collectionManager);
-                    boolean IdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
-                    boolean PassportIdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
-                    if (collectionManager.inCollection(musicBand)){
-                        System.out.println("Такая музыкальная группа уже есть");
-                    }else if(!PassportIdIsUnique){
-                        System.out.println("Неверные паспортные данные: такие данные уже есть");
-                    }else if (!IdIsUnique){
-                        System.out.println("ID");
-                    }else{
-                        collectionManager.add(musicBand);
-                        return new Response("Музыкальная группа успешно добавлена");
-                    }
+    public Response execute(String... args) throws CannotResolveClassException, ConversionException, IOException, ClassNotFoundException {
 
-                }else{
-                    ArrayList<String> params = new ArrayList<>();
-                    for (String argument: args){
-                        String[] s = argument.split(";");
-                        params.addAll(Arrays.asList(s));
-                    }
-                    if(params.size() != 9){
-                        throw new ArrayIndexOutOfBoundsException("Неверное количество аргументов");
-                    }
-                    MusicBand musicBand = MusicBandBuilder.buildMusicBandByParams(collectionManager,params);
-                    if (musicBand == null){
-                        throw new NullPointerException("Неверный аргумент");
-                    }
-                    collectionManager.add(musicBand);
-                    System.out.println("Музыкальная группа успешно добавлена");
-                }
-            }
-        }catch (IllegalArgumentException | NullPointerException | StreamException ex){
-            System.out.println("Музыкальная группа не добавлена: " + ex.getMessage());
+        MusicBand musicBand = (MusicBand) XmlHandler.deserialize(args[0]);
+
+        boolean PassportIdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
+        boolean IdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
+        if (collectionManager.inCollection(musicBand)){
+            new Response("такая группа уже есть");
+        }else if(!PassportIdIsUnique){
+            new Response("неверные паспортные данные: такие данные уже есть");
+        }else if(!IdIsUnique){
+            new Response("группа с таким ID уже есть");
+        }else{
+            musicBand.setId(collectionManager.getSize());
+            collectionManager.add(musicBand);
+            collectionManager.save();
+            return new Response("Музыкальная группа успешно добавлена");
         }
         return null;
     }

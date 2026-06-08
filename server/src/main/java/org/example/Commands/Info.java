@@ -3,7 +3,7 @@ package org.example.Commands;
 import network.Response;
 import org.example.Menegers.CollectionManager;
 
-public class Info extends model.commands.AbstractCommand {
+public class Info extends model.commands.Command {
 
     CollectionManager collectionManager;
 

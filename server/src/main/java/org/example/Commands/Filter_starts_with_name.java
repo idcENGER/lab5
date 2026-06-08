@@ -3,11 +3,11 @@ package org.example.Commands;
 import network.Response;
 import org.example.Menegers.CollectionManager;
 import model.MusicBands.*;
-import org.example.Utility.XmlHandler;
+import utility.XmlHandler;
 
 import java.util.HashSet;
 
-public class Filter_starts_with_name extends model.commands.AbstractCommand {
+public class Filter_starts_with_name extends model.commands.Command {
 
     CollectionManager collectionManager;
 
@@ -19,20 +19,20 @@ public class Filter_starts_with_name extends model.commands.AbstractCommand {
     @Override
     public Response execute(String... args){
         try{
-            if(args.length == 0){
-                throw new ArrayIndexOutOfBoundsException("Аргумент не может быть равен нулю");
-            }
             HashSet<MusicBand> set = collectionManager.filterMusicBandByName(XmlHandler.SpaceRemover(args[0]),true);
             if (!set.isEmpty()){
+                StringBuilder s = new StringBuilder();
                 for (MusicBand band : set){
-                    System.out.println(band);
+                    s.append(band).append("\n");
                 }
+                s.setLength(s.length() - 1);
+                return new Response(s.toString());
             }else{
-                System.out.println("Группы с таким именем не нашлось");
+                return new Response("Группы с таким именем не нашлось");
             }
         }catch (ArrayIndexOutOfBoundsException ex){
             System.out.println(ex.getMessage());
+            return new Response("Группы с таким именем не нашлось");
         }
-        return null;
     }
 }

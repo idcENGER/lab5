@@ -2,9 +2,9 @@ package org.example.Commands;
 
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.Utility.XmlHandler;
+import utility.XmlHandler;
 
-public class Remove_by_id extends model.commands.AbstractCommand {
+public class Remove_by_id extends model.commands.Command {
     CollectionManager collectionManager;
 
     public Remove_by_id(CollectionManager collectionManager) {

@@ -1,24 +1,27 @@
 package network;
 
+import model.commands.Command;
+
 public class Request {
 
-    private final String command;
+    private final Command command;
 
-    public Request(String command, String[] arguments){
+    public Request(Command command){
         this.command = command;
     }
 
-    public Request(String command){
-        this.command = command;
-    }
-
-    public String getCommand() {
+    public Command getCommand() {
         return command;
     }
 
+    public String[] getArguments(){
+        return command.getArguments();
+    }
+
+
     @Override
     public String toString(){
-        return this.command;
+        return this.command.toString();
     }
 
 }

@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashSet;
 
-public class Execute_script extends model.commands.AbstractCommand {
+public class Execute_script extends model.commands.Command {
 
     CommandInvoker commandInvoker;
     private final HashSet<Path> scripts = new HashSet<>();

@@ -4,7 +4,7 @@ import network.Response;
 import org.example.Menegers.CollectionManager;
 
 
-public class Show extends model.commands.AbstractCommand {
+public class Show extends model.commands.Command {
 
     CollectionManager collectionManager;
 

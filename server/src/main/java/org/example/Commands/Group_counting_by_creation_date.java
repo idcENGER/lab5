@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class Group_counting_by_creation_date extends model.commands.AbstractCommand {
+public class Group_counting_by_creation_date extends model.commands.Command {
 
     CollectionManager collectionManager;
 
