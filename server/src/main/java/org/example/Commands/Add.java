@@ -35,7 +35,7 @@ public class Add extends Command {
         }else if(!IdIsUnique){
             new Response("группа с таким ID уже есть");
         }else{
-            musicBand.setId(collectionManager.getSize());
+            musicBand.setId(collectionManager.getSize()+1);
             collectionManager.add(musicBand);
             collectionManager.save();
             return new Response("Музыкальная группа успешно добавлена");

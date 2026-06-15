@@ -16,22 +16,17 @@ public class Filter_contains_name extends model.commands.Command {
     }
 
     @Override
-    public Response execute(String... args){
-        try{
-            if(args.length == 0){
-                throw new ArrayIndexOutOfBoundsException("Аргумент не может быть равен нулю");
+    public Response execute(String... args) {
+        HashSet<MusicBand> set = collectionManager.filterMusicBandByName(XmlHandler.SpaceRemover(args[0]), false);
+        if (!set.isEmpty()) {
+            StringBuilder s = new StringBuilder();
+            for (MusicBand band : set){
+                s.append(band).append("\n");
             }
-            HashSet<MusicBand> set = collectionManager.filterMusicBandByName(XmlHandler.SpaceRemover(args[0]),false);
-            if (!set.isEmpty()){
-                for (MusicBand band : set){
-                    System.out.println(band);
-                }
-            }else{
-                System.out.println("Группы с таким именем не нашлось");
-            }
-        }catch (ArrayIndexOutOfBoundsException ex){
-            System.out.println(ex.getMessage());
+            s.setLength(s.length() - 1);
+            return new Response(s.toString());
+        } else {
+            return new Response("Группы с таким именем не нашлось");
         }
-        return null;
     }
 }

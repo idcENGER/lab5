@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <HashSet>
   <MusicBand>
+    <id>2</id>
+    <name>Group</name>
+    <coordinates>
+      <x>1</x>
+      <y>1.0</y>
+    </coordinates>
+    <creationDate>2026-06-08T19:50:47.620694857+03:00[Europe/Moscow]</creationDate>
+    <numberOfParticipants>2</numberOfParticipants>
+    <establishmentDate>2026-06-08</establishmentDate>
+    <genre>ROCK</genre>
+    <frontMan>
+      <name>Tvari</name>
+      <height>170.0</height>
+      <passportID>1241KDSKKS</passportID>
+      <hairColor>WHITE</hairColor>
+      <location>
+        <x>1.0</x>
+        <y>1</y>
+        <z>1.0</z>
+      </location>
+    </frontMan>
+  </MusicBand>
+  <MusicBand>
     <id>1</id>
     <name>Pink Floyd</name>
     <coordinates>

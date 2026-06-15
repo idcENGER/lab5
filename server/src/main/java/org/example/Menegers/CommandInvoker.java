@@ -4,6 +4,7 @@ import model.commands.Command;
 import network.Response;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

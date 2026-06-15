@@ -171,53 +171,34 @@ public class CollectionManager {
     }
 
     public HashSet<MusicBand> getMusicBandsByParam(MusicBand element,String param) throws WrongArgumentException {
-        boolean validParam = false;
-        String[] PARAMS = {"NAME","ID","COORDINATES", "NUMBER OF PARTICIPANTS","GENRE","FRONT MAN"};
         try {
-            for (String i: PARAMS){
-                if (param.equals(i)){
-                    validParam = true;
-                    break;
+            switch (param){
+                case "NAME" -> {
+                    return getGreaterMusicBandByName(element.getName());
+                }
+                case  "ID" -> {
+                    HashSet<MusicBand> set = new HashSet<>();
+                    set.add(getMusicBandByID(Integer.parseInt("1")));
+                    return set;
+                }
+                case "COORDINATES" -> {
+                    Coordinates value = element.getCoordinates();
+                    return getGreaterMusicBandByCoordinates(value);
+                }
+                case "NUMBER OF PARTICIPANTS" -> {
+                    return getMusicBandByNumberOfParticipants(element.getNumberOfParticipants());
+                }
+                case "GENRE" -> {
+                    return getGreaterMusicBandByGenre(element.getGenre());
+                }
+                case "FRONT MAN" ->{
+                    return getGreaterMusicBandByFrontMan(element.getFrontMan());
                 }
             }
-
-            try {
-                if(!validParam){
-                    throw new WrongArgumentException("У музыкальной группы нет такого параметра");
-                }
-                switch (param){
-                    case "NAME" -> {
-                        return getGreaterMusicBandByName(element.getName());
-                    }
-                    case  "ID" -> {
-                        HashSet<MusicBand> set = new HashSet<>();
-                        set.add(getMusicBandByID(Integer.parseInt("1")));
-                        return set;
-                    }
-                    case "COORDINATES" -> {
-                        Coordinates value = element.getCoordinates();
-                        return getGreaterMusicBandByCoordinates(value);
-                    }
-                    case "NUMBER OF PARTICIPANTS" -> {
-                        return getMusicBandByNumberOfParticipants(element.getNumberOfParticipants());
-                    }
-                    case "GENRE" -> {
-                        return getGreaterMusicBandByGenre(element.getGenre());
-                    }
-                    case "FRONT MAN" ->{
-                        return getGreaterMusicBandByFrontMan(element.getFrontMan());
-                    }
-                }
+        }catch (NullPointerException exception){
             System.out.println("Музыкальной группы с таким именем нет");
-            return null;
-        }catch (WrongArgumentException exception){
-            System.out.println(exception.getMessage());
-            return null;
-            }
-        }catch (ArrayIndexOutOfBoundsException ex){
-            System.out.println("Неверное количество аргументов команды");
-            return null;
         }
+        return null;
     }
 
     public HashSet<MusicBand> filterMusicBandByName(String name,boolean start_with){

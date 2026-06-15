@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public interface ArglessCommand {
 
-    static boolean valid(String commandName,String[] arguments){
+    static boolean valid(String[] arguments){
         return arguments == null;
     }
 

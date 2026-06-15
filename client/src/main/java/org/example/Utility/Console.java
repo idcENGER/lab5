@@ -1,7 +1,6 @@
 package org.example.Utility;
 
 import com.thoughtworks.xstream.io.StreamException;
-import model.MusicBands.MusicBand;
 import model.commands.Command;
 import model.commands.Commands;
 import network.Request;
@@ -10,11 +9,12 @@ import model.commands.CommandWithArgument;
 import network.Response;
 import org.example.Commands.Exit;
 import org.example.Network.UDPClient;
-import utility.MusicBandBuilder;
 import utility.XmlHandler;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Console {
@@ -22,10 +22,8 @@ public class Console {
     public static String[] args;
 
     public static void run() throws IOException {
-        UDPClient client = new UDPClient(InetAddress.getLocalHost());
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("\nВыход");
-        }));
+        UDPClient client = new UDPClient();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {System.out.println("\nВыход");}));
         Scanner scanner = new Scanner(System.in);
         Exit exit = new Exit();
         System.out.println("Welcome to Lab6APP. Enter help to get command list.");
@@ -54,23 +52,24 @@ public class Console {
                 }else {
                     args = null;
                 }
+                //execute /home/enger/Projects/lab6/client/src/main/resources/sc1
                 try {
                     Request request = null;
                     Commands.valueOf(commandName);
+                    if (commandName.equals("execute")){
+                        CommandWithArgument.valid(commandName,args);
+                    }
                     if(ArglessCommand.enumInclude(commandName)){
-                        if(ArglessCommand.valid(commandName,args)){
+                        if(ArglessCommand.valid(args)){
                             Command command = new Command(commandName,(String) null);
                             request = new Request(command);
                         } else{
                             System.out.println("команда не поддерживает аргументы");
                         }
                     }else {
-                        if(CommandWithArgument.valid(commandName,args)){
-                            if (CommandWithArgument.isInteract(commandName) && args == null){
-                                MusicBand musicBand = MusicBandBuilder.buildMusicBandByNoArgs();
-                                args = new String[]{XmlHandler.serialize(musicBand)};
-
-                            }
+                        Optional<String[]> check = CommandWithArgument.valid(commandName,args);
+                        if(check.isPresent()){
+                            args = check.get();
                             Command command = new Command(commandName,args);
                             request = new Request(command);
                         }
@@ -86,6 +85,8 @@ public class Console {
                 }
             }catch (InterruptedException e){
                 Thread.currentThread().interrupt();
+            }catch (StreamException streamException){
+                System.out.println(streamException.getMessage());
             }
         }
     }

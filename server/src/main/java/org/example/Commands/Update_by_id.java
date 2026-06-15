@@ -17,26 +17,13 @@ public class Update_by_id extends model.commands.Command {
     @Override
     public Response execute(String... args) {
         try {
-            String[] arguments = args[0].split(" ",2);
-            int id = Integer.parseInt(arguments[0]);
+            int id = Integer.parseInt(args[0]);
+            MusicBand newMusicBand  = (MusicBand) XmlHandler.deserialize(args[1]);
             MusicBand musicBand = collectionManager.getMusicBandByID(id);
-            if (arguments.length == 1){
-                if(musicBand != null){
-                    System.out.println("Обновление музыкальной группы...");
-                    MusicBandBuilder.MusicBandUpdater(musicBand);
-                }
-            }else {
-                //MusicBand newMusicBand = XmlHandler.DeserializeMusicBandXMLXStream(arguments[1],collectionManager);
-                if(musicBand != null){
-                    System.out.println("Обновление музыкальной группы");
-                  //  MusicBandBuilder.RawMusicBandUpdater(musicBand,newMusicBand);
-                }else {
-                    throw new NullPointerException("Ошибка парсинга");
-                }
-            }
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException | NullPointerException e) {
-            System.out.println(e.getMessage());
+            MusicBandBuilder.MusicBandUpdater(musicBand,newMusicBand);
+            return new Response("Музыкальная группа обновлена");
+        }catch (NullPointerException e){
+            return new Response("Музыкальной группы с таким id нет");
         }
-        return null;
     }
 }

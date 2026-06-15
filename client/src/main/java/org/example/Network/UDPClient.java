@@ -1,69 +1,62 @@
 package org.example.Network;
 
 import network.Response;
-import utility.BufferHandler;
+import utility.MessageAssembler;
+import utility.MessageFragmenter;
 import utility.XmlHandler;
 
 import java.io.IOException;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
 import java.util.List;
-
-/*client app worked by UDP in nonblocked mode
-* for sharing data used DatagramChannel
-* All of network interaction described in this class*/
+import java.util.Random;
 
 public class UDPClient {
 
-    private final int BUFFER_SIZE = 1024;
-    private final int SERVER_PORT = 24868;
-    private final DatagramSocket socket;
-    private final InetAddress serverAddress;
+    private static final Random random = new Random();
+    private final DatagramChannel channel;
+    private final InetSocketAddress server;
 
-    public UDPClient(InetAddress addr) throws IOException {
-        this.serverAddress = addr;
-        this.socket = new DatagramSocket();
+    public UDPClient() throws IOException {
+        this.channel = DatagramChannel.open();
+        channel.configureBlocking(false);
+        this.server = new InetSocketAddress(InetAddress.getLocalHost(),24868);
+
     }
 
 
     public Response sendRequest(String request) throws IOException, InterruptedException {
-
-        byte[] respBuffer = new byte[BUFFER_SIZE];
-        DatagramPacket respPacket = new DatagramPacket(respBuffer,BUFFER_SIZE);
-        byte[] sendData = request.getBytes();
-        List<byte[]> packets = BufferHandler.getPackets(sendData);
-        for (byte[] packet : packets){
-            DatagramPacket sendPacket = new DatagramPacket(
-                    packet,
-                    packet.length,
-                    serverAddress,
-                    SERVER_PORT
-            );
-            socket.send(sendPacket);
+        int messageId = random.nextInt(1000);
+        List<ByteBuffer> fragments = MessageFragmenter.fragment(request.getBytes(),messageId);
+        for (ByteBuffer fragment : fragments) {
+            channel.send(fragment, server);
         }
+        ByteBuffer buffer = ByteBuffer.allocate(MessageFragmenter.MTU);
+        MessageAssembler assembler = null;
+        String response = null;
 
-        socket.setSoTimeout(500);
-        StringBuilder response = new StringBuilder();
-        long lastPacketTime = System.currentTimeMillis();
         while (true){
-            try {
-                socket.receive(respPacket);
-                lastPacketTime = System.currentTimeMillis();
-                String respStr = new String(
-                        respPacket.getData(),
-                        respPacket.getOffset(),
-                        respPacket.getLength(),
-                        StandardCharsets.UTF_8
-                );
-                response.append(respStr);
-
-                respPacket.setLength(BUFFER_SIZE);
-            } catch (SocketTimeoutException e) {
-                if (System.currentTimeMillis() - lastPacketTime > 500){
-                    break;
-                }
+            buffer.clear();
+            channel.receive(buffer);
+            buffer.flip();
+            MessageFragmenter.FragmentHeader header = MessageFragmenter.extractHeader(buffer);
+            if(header == null){
+                continue;
             }
-        };
-        return (Response) XmlHandler.deserialize(String.valueOf(response));
+            if(assembler == null){
+                assembler = new MessageAssembler(header.messageId,header.totalFragments);
+            }
+
+            byte[] fragmentData = MessageFragmenter.extractData(buffer);
+            boolean complete = assembler.addFragment(header.fragmentIndex,fragmentData);
+
+            if(complete){
+                byte[] msg = assembler.assemble();
+                response = new String(msg);
+                return (Response) XmlHandler.deserialize(response);
+            }
+
+        }
     }
 }

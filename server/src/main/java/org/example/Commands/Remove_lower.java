@@ -4,10 +4,8 @@ import network.Response;
 import org.example.Menegers.CollectionManager;
 import model.MusicBands.*;
 import utility.XmlHandler;
-import utility.MusicBandBuilder;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Remove_lower extends model.commands.Command {
 
@@ -20,24 +18,11 @@ public class Remove_lower extends model.commands.Command {
 
     @Override
     public Response execute(String... args) throws IOException, ClassNotFoundException {
-        /*try {
-            MusicBand element;
-            if (args.length ==0){
-                element = MusicBandBuilder.buildMusicBandByNoArgs(null);
-            }else {
-                element = XmlHandler.DeserializeMusicBandXMLXStream(args[0],collectionManager);
-                if (element == null){
-                    throw new NullPointerException("Ошибка парсинга");
-                }
-            }
-            Scanner scanner = new Scanner(System.in);
-            System.out.println(element);
-            System.out.print("Введите критерий для rml(скопируйте параметр, написанный большими буквами): ");
-            String param = scanner.nextLine();
-            collectionManager.getCollections().removeAll(collectionManager.getMusicBandsByParam(element, param));
-        }catch (ArrayIndexOutOfBoundsException | NullPointerException exception){
-            System.out.println(exception.getMessage());
-        }*/
-        return null;
+        MusicBand musicBand = (MusicBand) XmlHandler.deserialize(args[0]);
+        String param = args[1];
+        int size = collectionManager.getSize();
+        collectionManager.getCollections().removeAll(collectionManager.getMusicBandsByParam(musicBand, param));
+        collectionManager.save();
+        return new Response("из коллекции было удалены музыкальные группы:" + (size - collectionManager.getSize()));
     }
 }

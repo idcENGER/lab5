@@ -4,11 +4,10 @@ import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import utility.MusicBandBuilder;
 import utility.XmlHandler;
 import model.MusicBands.*;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Add_if_min extends model.commands.Command {
 
@@ -20,33 +19,15 @@ public class Add_if_min extends model.commands.Command {
     }
 
     @Override
-    public Response execute(String... args) throws CannotResolveClassException, ConversionException {
-        /*try {
-            if (args.length > 1){
-                throw new ArrayIndexOutOfBoundsException("Неверное количество аргументов");
-            }
-            MusicBand newMusicBand;
-            if (args.length == 0){
-                newMusicBand = MusicBandBuilder.buildMusicBandByNoArgs(null);
-            } else {
-                newMusicBand = XmlHandler.deserialize(args[0],collectionManager);
-            }
-            if (newMusicBand != null) {
-                newMusicBand.setId(collectionManager.getCollections().size()+1);
-                Scanner scanner = new Scanner(System.in);
-                System.out.println(newMusicBand);
-                System.out.print("Введите критерий для aifm(скопируйте параметр, написанный большими буквами): ");
-                String param = scanner.nextLine();
-                if (collectionManager.getMusicBandsByParam(newMusicBand,param).isEmpty()){
-                    collectionManager.add(newMusicBand);
-                    System.out.println("Элемент добавлен.");
-                }
-            }else {
-                throw new NullPointerException("Ошибка парсинга");
-            }
-        }catch (ArrayIndexOutOfBoundsException | NullPointerException ex){
-            System.out.println(ex.getMessage());
-        }*/
-        return null;
+    public Response execute(String... args) throws CannotResolveClassException, ConversionException, IOException, ClassNotFoundException {
+        MusicBand musicBand = (MusicBand) XmlHandler.deserialize(args[0]);
+        String param = args[1];
+        if (collectionManager.getMusicBandsByParam(musicBand,param).isEmpty()){
+            musicBand.setId(collectionManager.getSize()+1);
+            collectionManager.add(musicBand);
+            collectionManager.save();
+            return new Response("Музыкальная группа добавлен.");
+        }
+        return new Response("Группа не добавлена: группы меньше нет");
     }
 }

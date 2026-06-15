@@ -4,6 +4,8 @@ import network.Response;
 import org.example.Menegers.CollectionManager;
 import utility.XmlHandler;
 
+import java.io.IOException;
+
 public class Remove_by_id extends model.commands.Command {
     CollectionManager collectionManager;
 
@@ -27,13 +29,15 @@ public class Remove_by_id extends model.commands.Command {
                 }
             }
             if (Finalresult) {
-                System.out.println(message);
+                collectionManager.save();
+                return new Response(message.toString());
             } else {
-                System.out.println("Такой музыкальной группы нет");
+                return new Response("Такой музыкальной группы нет");
             }
         }catch (IllegalArgumentException | IndexOutOfBoundsException ex){
-            System.out.println("Неверный аргумент: " + ex.getMessage());
+            return new Response("Неверный аргумент: " + ex.getMessage());
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }

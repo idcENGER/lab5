@@ -30,9 +30,10 @@ public class Server {
         commandInvoker.register(new Add_if_min(collectionManager));
         commandInvoker.register(new Remove_greater(collectionManager));
         commandInvoker.register(new Remove_lower(collectionManager));
-        //commandInvoker.register(new Execute_script(commandInvoker));
+        commandInvoker.register(new Execute_script(commandInvoker));
         collectionManager.recoverCollection("/home/enger/Projects/lab6/server/src/main/resources/data.xml");
         UDPServer server = new UDPServer(commandInvoker,24868);
+        server.run();
     }
 }
 

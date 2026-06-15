@@ -134,14 +134,14 @@ public class MusicBandBuilder {
         }
     }
 
-    public static void MusicBandUpdater(MusicBand musicBand){
-        musicBand.setName(askName());
-        musicBand.setCoordinates(askCoordinates());
+    public static void MusicBandUpdater(MusicBand musicBand,MusicBand newMusicBand){
+        musicBand.setName(newMusicBand.getName());
+        musicBand.setCoordinates(newMusicBand.getCoordinates());
         musicBand.setCreationDate(ZonedDateTime.now());
-        musicBand.setNumberOfParticipants(askNumberOfParticipants());
+        musicBand.setNumberOfParticipants(newMusicBand.getNumberOfParticipants());
         musicBand.setEstablishmentDate(LocalDate.now());
-        musicBand.setGenre(askGenre());
-        musicBand.setFrontMan(askFrontMan(false,musicBand));
+        musicBand.setGenre(newMusicBand.getGenre());
+        musicBand.setFrontMan(newMusicBand.getFrontMan());
     }
 
     public static void RawMusicBandUpdater(MusicBand musicBand,MusicBand newMusicBand){

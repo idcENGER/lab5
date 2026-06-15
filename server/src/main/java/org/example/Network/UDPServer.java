@@ -2,62 +2,135 @@ package org.example.Network;
 
 import network.Request;
 import org.example.Menegers.CommandInvoker;
-import utility.BufferHandler;
+import utility.MessageAssembler;
+import utility.MessageFragmenter;
 import utility.XmlHandler;
 
 import java.io.IOException;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Random;
 
 
 public class UDPServer {
 
+    private final Random random = new Random();
     private final CommandInvoker commandInvoker;
-    private final int BUFFER_SIZE = 1024;
+    private final int PORT;
 
-    public UDPServer(CommandInvoker commandInvoker,int port){
+
+    public UDPServer(CommandInvoker commandInvoker, int port){
         this.commandInvoker = commandInvoker;
-        try (DatagramSocket socket = new DatagramSocket(port)){
-            socket.setSoTimeout(1000);
-            byte[] buffer = new byte[BUFFER_SIZE];
-            DatagramPacket requestPacket = new DatagramPacket(buffer,BUFFER_SIZE);
-            while (true) {
-                try {
-                    socket.receive(requestPacket);
-                    String message = new String(
-                            requestPacket.getData(),
-                            requestPacket.getOffset(),
-                            requestPacket.getLength(),
-                            StandardCharsets.UTF_8
-                    );
-                    Request request = (Request) XmlHandler.deserialize(message);
-                    String response = response(request);
-                    List<byte[]> packets = BufferHandler.getPackets(response.getBytes());
-                    for (byte[] packet : packets){
-                        DatagramPacket sendPacket = new DatagramPacket(
-                                packet,
-                                packet.length,
-                                requestPacket.getAddress(),
-                                requestPacket.getPort()
-                        );
-                        socket.send(sendPacket);
-                    }
-                }catch (SocketTimeoutException ignore){
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                } finally {
-                    requestPacket.setLength(BUFFER_SIZE);
-                }
+        this.PORT = port;
+    }
+
+    public void run() throws IOException {
+        Selector selector = Selector.open();
+        DatagramChannel channel = DatagramChannel.open();
+        channel.configureBlocking(false);
+        channel.bind(new InetSocketAddress(PORT));
+        SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
+        key.attach(new ServerContext(channel));
+        while (true) {
+            int readyCount = selector.select();
+
+            if (readyCount == 0) {
+                continue;
             }
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
+
+            while (iterator.hasNext()) {
+                SelectionKey readyKey = iterator.next();
+                iterator.remove();
+
+                if (!readyKey.isValid()) {
+                    continue;
+                }
+
+                if (readyKey.isReadable()) {
+                    serve(readyKey);
+                }
+
+            }
         }
     }
 
-    public String response(Request request) throws IOException, ClassNotFoundException {
-        if (request.getArguments() == null){return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(),null));}
+    private String response(Request request) throws IOException, ClassNotFoundException {
+        if (request.getArguments() == null) {
+            return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), null));
+        }
         return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), request.getArguments()));
+    }
+
+    private void serve(SelectionKey key) throws IOException {
+
+        ServerContext serverContext = (ServerContext)key.attachment();
+        DatagramChannel channel = serverContext.channel;
+        ByteBuffer buffer = ByteBuffer.allocate(MessageFragmenter.MTU);
+        buffer.clear();
+
+        SocketAddress sender = channel.receive(buffer);
+        if (sender == null){
+            return;
+        }
+
+        buffer.flip();
+
+        MessageFragmenter.FragmentHeader header = MessageFragmenter.extractHeader(buffer);
+        if (header == null){
+            return;
+        }
+
+        byte[] fragmentData = MessageFragmenter.extractData(buffer);
+
+        MessageAssembler assembler = serverContext.getMessageAssembler(header.messageId, header.totalFragments);
+
+        try {
+            boolean complete = assembler.addFragment(header.fragmentIndex,fragmentData);
+
+            if(complete){
+                byte[] fullMsg = assembler.assemble();
+                String requestString = new String(fullMsg);
+                Request request = (Request)XmlHandler.deserialize(requestString);
+                byte[] response = response(request).getBytes();
+                int messageId = random.nextInt(1000);
+
+                List<ByteBuffer> fragments = MessageFragmenter.fragment(response,messageId);
+                for (ByteBuffer fragment : fragments) {
+                    channel.send(fragment, sender);
+                }
+            }
+        }catch (IllegalStateException stateException){
+            serverContext.removeAssembler(header.messageId);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static class ServerContext {
+
+        final DatagramChannel channel;
+        final Map<Integer,MessageAssembler> assemblers = new ConcurrentHashMap<>();
+
+        ServerContext(DatagramChannel channel){
+            this.channel = channel;
+        }
+
+        MessageAssembler getMessageAssembler(int msgId,int totalFragments){
+            return assemblers.computeIfAbsent(msgId, id -> new MessageAssembler(msgId,totalFragments));
+        }
+
+        void removeAssembler(int msgId){
+            assemblers.remove(msgId);
+        }
     }
 }
