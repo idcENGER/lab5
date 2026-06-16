@@ -41,7 +41,7 @@ public class Server {
         commandInvoker.register(new Remove_greater(collectionManager));
         commandInvoker.register(new Remove_lower(collectionManager));
         commandInvoker.register(new Execute_script(commandInvoker));
-        collectionManager.recoverCollection("/home/enger/Projects/lab6/server/src/main/resources/data.xml");
+        collectionManager.recoverCollection(args[0]);
         UDPServer server = new UDPServer(commandInvoker,24868);
         server.run();
     }

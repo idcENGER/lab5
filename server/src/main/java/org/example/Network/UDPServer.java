@@ -111,7 +111,7 @@ public class UDPServer {
             }
         }catch (IllegalStateException stateException){
             serverContext.removeAssembler(header.messageId);
-        } catch (ClassNotFoundException ignored) {
+        } catch (ClassNotFoundException | NullPointerException ignored) {
         }
 
     }

@@ -57,3 +57,24 @@ group: сгруппировать элементы коллекции по зн�
 2026-06-16 04:33:13.425 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
 2026-06-16 04:55:53.233 [Thread-0] INFO  org.example.Server - сервер прекратил работу
 2026-06-16 05:04:18.914 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 13:41:29.402 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 13:42:03.358 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:59666 отправил данные
+2026-06-16 13:42:03.520 [main] INFO  org.example.Network.UDPServer - выполняется запрос Command{name='show', description='null', arguments='null'}
+2026-06-16 13:42:03.538 [main] INFO  org.example.Network.UDPServer - ответ отправлен пользователю /127.0.0.1:59666,содержание:<Response>
+  <content>MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}
+MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}</content>
+</Response>
+2026-06-16 13:42:18.186 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 13:42:19.274 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 13:42:20.686 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 14:29:56.027 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 14:30:49.031 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 14:30:50.670 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
