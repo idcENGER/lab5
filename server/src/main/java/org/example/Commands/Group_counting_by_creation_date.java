@@ -22,24 +22,28 @@ public class Group_counting_by_creation_date extends model.commands.Command {
     @Override
     public Response execute(String... args) {
         StringBuilder s = new StringBuilder();
-        HashSet<MusicBand> collection = (HashSet<MusicBand>) collectionManager.getCollections().clone();
-        Iterator<MusicBand> iterator = collection.iterator();
-        ArrayList<ZonedDateTime> date = new ArrayList<>();
-        while (iterator.hasNext()){
-            MusicBand musicBand = iterator.next();
-            int counter = 0;
-            ZonedDateTime creationDate = musicBand.getCreationDate();
-            if(!date.contains(creationDate)){
-                for (MusicBand i : collection){
-                    if (creationDate.equals(i.getCreationDate())){
-                        counter+=1;
+        try {
+            HashSet<MusicBand> collection = (HashSet<MusicBand>) collectionManager.getCollections().clone();
+            Iterator<MusicBand> iterator = collection.iterator();
+            ArrayList<ZonedDateTime> date = new ArrayList<>();
+            while (iterator.hasNext()){
+                MusicBand musicBand = iterator.next();
+                int counter = 0;
+                ZonedDateTime creationDate = musicBand.getCreationDate();
+                if(!date.contains(creationDate)){
+                    for (MusicBand i : collection){
+                        if (creationDate.equals(i.getCreationDate())){
+                            counter+=1;
+                        }
                     }
+                    date.add(creationDate);
+                    s.append(creationDate).append("->").append(counter).append("\n");
                 }
-                date.add(creationDate);
-                s.append(creationDate).append("->").append(counter).append("\n");
             }
+            s.setLength(s.length() - 1);
+            return new Response(s.toString());
+        }catch (Exception e){
+            return new Response("коллекция пуста");
         }
-        s.setLength(s.length() - 1);
-        return new Response(s.toString());
     }
 }
