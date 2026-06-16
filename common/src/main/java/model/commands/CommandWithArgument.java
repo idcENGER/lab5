@@ -7,18 +7,19 @@ import utility.MusicBandBuilder;
 import utility.ScriptTracker;
 import utility.XmlHandler;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
 public interface CommandWithArgument {
 
-    static Optional<String[]> valid(String commandName, String[] arguments) throws IOException {
+    static Optional<String[]> valid(String commandName, String[] arguments) {
         switch (commandName){
             case "add" ->{
                 if (arguments == null){
-                    return Optional.of(new String[0]);
+                    MusicBand musicBand = MusicBandBuilder.buildMusicBandByNoArgs();
+                    arguments = new String[]{XmlHandler.serialize(musicBand)};
+                    return Optional.of(arguments);
                 }
                 if (arguments.length == 1){
                     try {

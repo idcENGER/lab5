@@ -29,17 +29,16 @@ public class Add extends Command {
         boolean PassportIdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
         boolean IdIsUnique = collectionManager.getCollections().stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
         if (collectionManager.inCollection(musicBand)){
-            new Response("такая группа уже есть");
+            return new Response("такая группа уже есть");
         }else if(!PassportIdIsUnique){
-            new Response("неверные паспортные данные: такие данные уже есть");
+            return new Response("неверные паспортные данные: такие данные уже есть");
         }else if(!IdIsUnique){
-            new Response("группа с таким ID уже есть");
+            return new Response("группа с таким ID уже есть");
         }else{
             musicBand.setId(collectionManager.getSize()+1);
             collectionManager.add(musicBand);
             collectionManager.save();
             return new Response("Музыкальная группа успешно добавлена");
         }
-        return null;
     }
 }

@@ -26,7 +26,7 @@ public class Add_if_min extends model.commands.Command {
             musicBand.setId(collectionManager.getSize()+1);
             collectionManager.add(musicBand);
             collectionManager.save();
-            return new Response("Музыкальная группа добавлен.");
+            return new Response("Музыкальная группа добавлена");
         }
         return new Response("Группа не добавлена: группы меньше нет");
     }

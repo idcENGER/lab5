@@ -1,0 +1,67 @@
+
+2026-06-16 12:05:59.958 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-06-16 12:06:03.278 [main] INFO  org.example.Utility.Console - имя команды info, аргументы:null
+2026-06-16 12:06:03.310 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='info', description='null', arguments='null'}
+2026-06-16 12:06:03.562 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:CollectionManager{size:2, дата инициализации: 2026-06-16T11:53:48.891604879+03:00[Europe/Moscow]}
+2026-06-16 12:12:14.710 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-06-16 12:12:18.572 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-06-16 12:12:18.581 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-06-16 12:12:18.887 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-06-16 12:12:33.323 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-06-16 12:12:33.324 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-06-16 12:12:33.350 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}
+MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}
+2026-06-16 12:12:54.521 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-06-16 12:12:56.526 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-06-16 12:12:56.532 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-06-16 12:12:56.794 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}
+MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}
+2026-06-16 12:13:02.643 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-06-16 12:13:02.644 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-06-16 12:13:02.667 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе

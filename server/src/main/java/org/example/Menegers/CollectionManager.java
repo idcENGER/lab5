@@ -7,6 +7,8 @@ import model.MusicBands.Person;
 import org.example.Exceptions.WrongArgumentException;
 
 import org.example.Utility.ScannerParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -15,7 +17,8 @@ import java.util.HashSet;
 
 public class CollectionManager {
 
-    private CommandInvoker commandInvoker;
+    private static final Logger logger = LoggerFactory.getLogger(CollectionManager.class);
+    private final CommandInvoker commandInvoker;
 
     private final java.time.ZonedDateTime date = ZonedDateTime.now();
     private final HashSet<MusicBand> collections = new HashSet<>();
@@ -24,8 +27,8 @@ public class CollectionManager {
         this.commandInvoker = commandInvoker;
     }
 
-
     public void add(MusicBand musicBand){
+        logger.info("добавлена музыкальная группа:{}",musicBand);
         collections.add(musicBand);
     }
 
@@ -43,6 +46,7 @@ public class CollectionManager {
 
     public void save() throws IOException, ClassNotFoundException {
         commandInvoker.execute("save",null);
+        logger.info("коллекция сохранена");
     }
 
     public void recoverCollection(String path) throws IOException,NullPointerException {
@@ -52,14 +56,14 @@ public class CollectionManager {
         if (IdIsUnique && PassportIdIsUnique) {
             collections.addAll(data);
         } else if (!PassportIdIsUnique & !IdIsUnique) {
-            System.out.println("Паспортные данные в коллекции не уникальны");
-            System.out.println("ID в коллекции не уникальны");
+            logger.error("Паспортные данные в коллекции не уникальны");
+            logger.error("ID в коллекции не уникальны");
             System.exit(0);
         } else if (!PassportIdIsUnique){
-            System.out.println("Паспортные данные в коллекции не уникальны");
+            logger.error("Паспортные данные в коллекции не уникальны");
             System.exit(0);
         }else {
-            System.out.println("ID в коллекции не уникальны");
+            logger.error("ID в коллекции не уникальны");
             System.exit(0);
         }
     }
@@ -81,9 +85,8 @@ public class CollectionManager {
                }
             }
         }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+            logger.warn("Collection is empty");
         }
-        System.out.println("Музыкальной группы с таким id нет");
         return null;
     }
 
@@ -97,7 +100,7 @@ public class CollectionManager {
             }
             return set;
         }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+            logger.warn("Collection is empty");
             return null;
         }
     }
@@ -128,7 +131,7 @@ public class CollectionManager {
             }
             return set;
         }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+            logger.warn("Collection is empty");
             return null;
         }
     }
@@ -143,7 +146,7 @@ public class CollectionManager {
             }
             return set;
         }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+            logger.warn("Collection is empty");
             return null;
         }
     }
@@ -195,9 +198,7 @@ public class CollectionManager {
                     return getGreaterMusicBandByFrontMan(element.getFrontMan());
                 }
             }
-        }catch (NullPointerException exception){
-            System.out.println("Музыкальной группы с таким именем нет");
-        }
+        }catch (NullPointerException ignored){}
         return null;
     }
 
@@ -218,7 +219,6 @@ public class CollectionManager {
                 }
             }
         }catch (NullPointerException ex){
-            System.out.println(ex.getMessage());
             return null;
         }
         return set;

@@ -18,9 +18,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UDPServer {
 
+    private static final Logger logger = LoggerFactory.getLogger(UDPServer.class);
     private final Random random = new Random();
     private final CommandInvoker commandInvoker;
     private final int PORT;
@@ -36,6 +39,7 @@ public class UDPServer {
         DatagramChannel channel = DatagramChannel.open();
         channel.configureBlocking(false);
         channel.bind(new InetSocketAddress(PORT));
+        logger.info("Сервер запущен на порту {}", PORT);
         SelectionKey key = channel.register(selector, SelectionKey.OP_READ);
         key.attach(new ServerContext(channel));
         while (true) {
@@ -63,13 +67,6 @@ public class UDPServer {
         }
     }
 
-    private String response(Request request) throws IOException, ClassNotFoundException {
-        if (request.getArguments() == null) {
-            return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), null));
-        }
-        return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), request.getArguments()));
-    }
-
     private void serve(SelectionKey key) throws IOException {
 
         ServerContext serverContext = (ServerContext)key.attachment();
@@ -78,6 +75,7 @@ public class UDPServer {
         buffer.clear();
 
         SocketAddress sender = channel.receive(buffer);
+        logger.info("пользователь {} отправил данные",sender);
         if (sender == null){
             return;
         }
@@ -86,6 +84,7 @@ public class UDPServer {
 
         MessageFragmenter.FragmentHeader header = MessageFragmenter.extractHeader(buffer);
         if (header == null){
+            logger.warn("заголовок пуст");
             return;
         }
 
@@ -100,23 +99,34 @@ public class UDPServer {
                 byte[] fullMsg = assembler.assemble();
                 String requestString = new String(fullMsg);
                 Request request = (Request)XmlHandler.deserialize(requestString);
-                byte[] response = response(request).getBytes();
+                String responseStr = response(request);
+                byte[] response = responseStr.getBytes();
                 int messageId = random.nextInt(1000);
 
                 List<ByteBuffer> fragments = MessageFragmenter.fragment(response,messageId);
                 for (ByteBuffer fragment : fragments) {
                     channel.send(fragment, sender);
                 }
+                logger.info("ответ отправлен пользователю {},содержание:{}",sender,responseStr);
             }
         }catch (IllegalStateException stateException){
             serverContext.removeAssembler(header.messageId);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (ClassNotFoundException ignored) {
         }
 
     }
 
+    private String response(Request request) throws IOException, ClassNotFoundException {
+        if (request.getArguments() == null) {
+            logger.info("выполняется запрос {}",request);
+            return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), null));
+        }
+        logger.info("выполняется запрос {}",request);
+        return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), request.getArguments()));
+    }
+
     private static class ServerContext {
+
 
         final DatagramChannel channel;
         final Map<Integer,MessageAssembler> assemblers = new ConcurrentHashMap<>();

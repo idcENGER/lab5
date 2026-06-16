@@ -1,0 +1,59 @@
+2026-06-16 02:29:57.289 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 02:34:28.985 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 02:34:32.532 [main] INFO  org.example.Network.UDPServer - сервер обрабатывает ключ channel=sun.nio.ch.DatagramChannelImpl@5a4aa2f2, selector=sun.nio.ch.EPollSelectorImpl@6591f517, interestOps=1, readyOps=1
+2026-06-16 02:34:32.532 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:60799 отправил данные
+2026-06-16 02:36:44.335 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 02:36:51.734 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:54428 отправил данные
+2026-06-16 02:39:14.163 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 02:39:15.741 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 03:26:55.259 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 03:27:01.408 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:42566 отправил данные
+2026-06-16 03:27:01.565 [main] INFO  org.example.Network.UDPServer - выполняется запрос Command{name='help', description='null', arguments='null'}
+2026-06-16 03:27:01.576 [main] INFO  org.example.Network.UDPServer - ответ отправлен пользователю /127.0.0.1:42566
+2026-06-16 03:38:58.330 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 03:38:59.796 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 03:39:03.762 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:58065 отправил данные
+2026-06-16 03:39:03.903 [main] INFO  org.example.Network.UDPServer - выполняется запрос Command{name='help', description='null', arguments='null'}
+2026-06-16 03:39:03.909 [main] INFO  org.example.Network.UDPServer - ответ отправлен пользователю /127.0.0.1:58065
+2026-06-16 03:41:26.176 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 03:41:27.757 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 03:41:30.992 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:50121 отправил данные
+2026-06-16 03:41:31.147 [main] INFO  org.example.Network.UDPServer - выполняется запрос Command{name='show', description='null', arguments='null'}
+2026-06-16 03:41:31.164 [main] INFO  org.example.Network.UDPServer - ответ отправлен пользователю /127.0.0.1:50121,содержание:<Response>
+  <content>MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}
+MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}</content>
+</Response>
+2026-06-16 04:09:18.996 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 04:14:24.339 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 04:14:27.456 [main] INFO  org.example.Network.UDPServer - пользователь /127.0.0.1:59975 отправил данные
+2026-06-16 04:14:27.610 [main] INFO  org.example.Network.UDPServer - выполняется запрос Command{name='help', description='null', arguments='null'}
+2026-06-16 04:14:27.616 [main] INFO  org.example.Network.UDPServer - ответ отправлен пользователю /127.0.0.1:59975,содержание:<Response>
+  <content>add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе</content>
+</Response>
+2026-06-16 04:33:10.872 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 04:33:13.425 [main] INFO  org.example.Network.UDPServer - Сервер запущен на порту 24868
+2026-06-16 04:55:53.233 [Thread-0] INFO  org.example.Server - сервер прекратил работу
+2026-06-16 05:04:18.914 [Thread-0] INFO  org.example.Server - сервер прекратил работу

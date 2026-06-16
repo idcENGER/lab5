@@ -9,24 +9,30 @@ import model.commands.CommandWithArgument;
 import network.Response;
 import org.example.Commands.Exit;
 import org.example.Network.UDPClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utility.XmlHandler;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class Console {
 
     public static String[] args;
+    private static final Logger logger = LoggerFactory.getLogger(Console.class);
 
     public static void run() throws IOException {
+        Thread mainThread = Thread.currentThread();
         UDPClient client = new UDPClient();
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {System.out.println("\nВыход");}));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("\nВыход");
+            mainThread.interrupt();
+        }));
         Scanner scanner = new Scanner(System.in);
         Exit exit = new Exit();
         System.out.println("Welcome to Lab6APP. Enter help to get command list.");
+        logger.info("клиент запущен");
         while (true){
             try {
                 System.out.print("=>");
@@ -53,6 +59,7 @@ public class Console {
                     args = null;
                 }
                 //execute /home/enger/Projects/lab6/client/src/main/resources/sc1
+                logger.info("имя команды {}, аргументы:{}",commandName,args);
                 try {
                     Request request = null;
                     Commands.valueOf(commandName);
@@ -75,8 +82,16 @@ public class Console {
                         }
                     }
                     if(request != null){
-                        Response response = client.sendRequest(XmlHandler.serialize(request));
-                        System.out.println(response);
+                        try {
+                            logger.info("попытка отправки запроса:{}",request);
+                            Response response = client.sendRequest(XmlHandler.serialize(request));
+                            logger.info("запрос успешно отправлен. Ответ сервера:{}",response);
+                            System.out.println(response);
+                        } catch (IOException e) {
+                            logger.warn("Ошибка связи с сервером:{}",e.getMessage());
+                            System.err.println("Ошибка связи с сервером:"+e.getMessage());
+                            System.out.println("=>");
+                        }
                     }else {
                         System.out.println("Неверный запрос");
                     }

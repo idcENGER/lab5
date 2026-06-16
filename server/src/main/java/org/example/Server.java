@@ -7,13 +7,23 @@ import org.example.Network.UDPServer;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Server {
+
+    private static final Logger logger = LoggerFactory.getLogger(Server.class);
 
     public static void main(String[] args) throws IOException{
         if (args.length == 0) {
-            System.out.println("Ошибка: Имя файла должно передаваться через аргумент командной строки.");
+            logger.error("Ошибка: Имя файла должно передаваться через аргумент командной строки.");
             System.exit(0);
         }
+        Thread mainThread = Thread.currentThread();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            logger.info("сервер прекратил работу");
+            mainThread.interrupt();
+        }));
         CommandInvoker commandInvoker = new CommandInvoker();
         CollectionManager collectionManager = new CollectionManager(commandInvoker);
         commandInvoker.register(new Help(commandInvoker));

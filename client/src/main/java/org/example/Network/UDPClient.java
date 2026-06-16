@@ -22,7 +22,6 @@ public class UDPClient {
         this.channel = DatagramChannel.open();
         channel.configureBlocking(false);
         this.server = new InetSocketAddress(InetAddress.getLocalHost(),24868);
-
     }
 
 
@@ -34,11 +33,24 @@ public class UDPClient {
         }
         ByteBuffer buffer = ByteBuffer.allocate(MessageFragmenter.MTU);
         MessageAssembler assembler = null;
-        String response = null;
+
+        long TIME_OUT = 5000;
+        long startTime = System.currentTimeMillis();
+
+        channel.socket().setSoTimeout(1000);
 
         while (true){
+
+            if (System.currentTimeMillis() - startTime > TIME_OUT){
+                throw new IOException("Превышено время ожидания");
+            }
+
             buffer.clear();
-            channel.receive(buffer);
+            try {
+                channel.receive(buffer);
+            }catch (SocketTimeoutException timeoutException){
+                continue;
+            }
             buffer.flip();
             MessageFragmenter.FragmentHeader header = MessageFragmenter.extractHeader(buffer);
             if(header == null){
@@ -53,7 +65,7 @@ public class UDPClient {
 
             if(complete){
                 byte[] msg = assembler.assemble();
-                response = new String(msg);
+                String response = new String(msg);
                 return (Response) XmlHandler.deserialize(response);
             }
 
