@@ -1,6 +1,7 @@
 package org.example.Utility;
 
 import com.thoughtworks.xstream.io.StreamException;
+import model.MusicBands.MusicBand;
 import model.commands.Command;
 import model.commands.Commands;
 import network.Request;
@@ -11,9 +12,11 @@ import org.example.Commands.Exit;
 import org.example.Network.UDPClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utility.MusicBandBuilder;
 import utility.XmlHandler;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -75,21 +78,37 @@ public class Console {
                         }
                     }else {
                         Optional<String[]> check = CommandWithArgument.valid(commandName,args);
+
                         if(check.isPresent()){
                             args = check.get();
                             Command command = new Command(commandName,args);
                             request = new Request(command);
+                            if (commandName.equals("ubi")){
+                                Request idChecker = new Request(new Command("cid",args));
+                                boolean contain = false;
+                                try {
+                                    contain = Boolean.parseBoolean(Objects.requireNonNull(client.sendRequest(XmlHandler.serialize(idChecker))).content());
+                                }catch (NullPointerException ex){
+                                    logger.error("server is unavailable");
+                                }
+                                if (!contain){
+                                    System.out.println("band with this id not found");
+                                    continue;
+                                }
+                                MusicBand musicBand = MusicBandBuilder.buildMusicBandByNoArgs();
+                                args = new String[]{args[0],XmlHandler.serialize(musicBand)};
+                                command.setArguments(args);
+                            }
                         }
                     }
                     if(request != null){
                         try {
                             logger.info("попытка отправки запроса:{}",request);
                             Response response = client.sendRequest(XmlHandler.serialize(request));
-                            logger.info("запрос успешно отправлен. Ответ сервера:{}",response);
                             System.out.println(response);
                         } catch (IOException e) {
-                            logger.warn("Ошибка связи с сервером:{}",e.getMessage());
-                            System.err.println("Ошибка связи с сервером:"+e.getMessage());
+                            System.out.println("Ошибка связи с сервером");
+                            logger.error("Ошибка связи с сервером:{}", e.getMessage());
                             System.out.println("=>");
                         }
                     }else {
@@ -101,7 +120,7 @@ public class Console {
             }catch (InterruptedException e){
                 Thread.currentThread().interrupt();
             }catch (StreamException streamException){
-                System.out.println(streamException.getMessage());
+                logger.error("stopped");
             }
         }
     }

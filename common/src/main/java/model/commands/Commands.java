@@ -14,5 +14,5 @@ public enum Commands {
     rml,
     rmg,
     rmi,
-    group
+    group,
 }

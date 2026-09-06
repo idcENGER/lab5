@@ -44,7 +44,7 @@ public class MusicBandBuilder {
                 System.out.print("Введите координаты в формате x,y(-32_768 <= x <= 32_767,-147 <= y <= 1.8 * 10^308): ");
                 String str = XmlHandler.SpaceRemover(scanner.nextLine());
                 if(!str.substring(str.length()-1).matches("^[0-9]")){
-                    throw new IllegalArgumentException();
+                    throw new IllegalArgumentException("неверный параметр");
                 }
                 String[] coordinates = str.split(",");
                 int x = Integer.parseInt(coordinates[0]);
@@ -66,14 +66,14 @@ public class MusicBandBuilder {
         try {
             n = Long.parseLong(XmlHandler.SpaceRemover(scanner.nextLine()));
         } catch (NumberFormatException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Неверный формат данных"+ex.getMessage());
         }
         while (n <= 0L){
             System.out.print("Введено некорректное значение(число не положительное). Введите целое число участников: ");
             try {
                 n = Long.parseLong(XmlHandler.SpaceRemover(scanner.nextLine()));
             }catch (NumberFormatException exception){
-                System.out.println(exception.getMessage());
+                System.out.println("Неверный формат данных"+exception.getMessage());
             }
         }
         return n;
@@ -129,7 +129,7 @@ public class MusicBandBuilder {
                     frontMan
             );
         }catch (Exception ex){
-            System.out.println(ex.getMessage());
+            System.out.println("Неверные входные данные: "+ex.getMessage());
             return null;
         }
     }
@@ -140,16 +140,6 @@ public class MusicBandBuilder {
         musicBand.setCreationDate(ZonedDateTime.now());
         musicBand.setNumberOfParticipants(newMusicBand.getNumberOfParticipants());
         musicBand.setEstablishmentDate(LocalDate.now());
-        musicBand.setGenre(newMusicBand.getGenre());
-        musicBand.setFrontMan(newMusicBand.getFrontMan());
-    }
-
-    public static void RawMusicBandUpdater(MusicBand musicBand,MusicBand newMusicBand){
-        musicBand.setName(newMusicBand.getName());
-        musicBand.setCoordinates(newMusicBand.getCoordinates());
-        musicBand.setCreationDate(newMusicBand.getCreationDate());
-        musicBand.setNumberOfParticipants(newMusicBand.getNumberOfParticipants());
-        musicBand.setEstablishmentDate(newMusicBand.getEstablishmentDate());
         musicBand.setGenre(newMusicBand.getGenre());
         musicBand.setFrontMan(newMusicBand.getFrontMan());
     }

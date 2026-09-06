@@ -241,3 +241,462 @@ NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESS
 FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
 }
 2026-06-16 14:29:49.964 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-06-16 23:41:29.290 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-06-16 23:41:37.591 [main] INFO  org.example.Utility.Console - имя команды add, аргументы:null
+2026-06-16 23:42:06.827 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='add', description='null', arguments='[Ljava.lang.String;@25641d39'}
+2026-06-16 23:42:07.101 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:Музыкальная группа успешно добавлена
+2026-08-11 16:02:25.867 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-11 16:02:30.146 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-11 16:02:30.149 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-11 16:02:35.397 [main] WARN  org.example.Utility.Console - Ошибка связи с сервером:Превышено время ожидания
+2026-08-11 17:15:50.563 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-11 17:15:54.061 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-11 17:15:54.095 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-11 17:17:05.031 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-11 17:17:07.059 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-11 17:17:07.064 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-11 17:17:15.619 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-11 17:17:18.520 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-11 17:17:18.526 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-11 17:21:08.583 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-11 17:21:10.233 [main] INFO  org.example.Utility.Console - имя команды рудз, аргументы:null
+2026-08-11 17:21:15.435 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-11 17:21:15.439 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 14:59:23.946 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-18 14:59:34.513 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 14:59:34.543 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:11:34.522 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-18 15:11:36.908 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 15:11:36.938 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:12:01.590 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-18 15:12:04.335 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 15:12:04.338 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:14:59.882 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-18 15:15:02.823 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 15:15:02.825 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:15:12.971 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-18 15:20:04.138 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 15:20:04.139 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:20:14.151 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-18 15:36:44.340 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-18 15:37:38.509 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-18 15:37:38.520 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-18 15:37:38.776 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 16:48:57.931 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 16:49:00.680 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 16:49:00.694 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 16:49:00.958 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 16:53:12.130 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 16:53:15.212 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 16:53:15.220 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 16:53:15.541 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 19:43:51.551 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 19:44:04.733 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 19:44:04.740 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 19:44:05.339 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 19:44:38.709 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 19:44:38.710 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 19:44:38.721 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 19:58:28.477 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 19:58:28.478 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 19:58:28.492 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 19:59:46.662 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 20:00:00.019 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 20:00:00.040 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 20:00:00.489 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 20:11:39.020 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 20:11:39.021 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 20:11:39.031 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 20:12:21.804 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 20:12:31.986 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 20:12:32.021 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 20:12:32.500 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-28 20:15:31.329 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-28 20:15:38.343 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-28 20:15:38.377 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-28 20:15:38.870 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-29 14:25:28.939 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-29 14:25:34.210 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-29 14:25:34.214 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-29 14:25:34.605 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:null
+2026-08-31 01:16:15.454 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:16:18.008 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:16:18.016 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:17:45.375 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:17:47.323 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:17:47.331 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:21:01.267 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:21:03.691 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:21:03.701 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:21:34.629 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:21:36.415 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:21:36.420 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:22:13.017 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:22:14.731 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:22:14.737 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:23:45.785 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:23:47.615 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:23:47.622 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-08-31 01:24:37.449 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-08-31 01:24:39.437 [main] INFO  org.example.Utility.Console - имя команды рудз, аргументы:null
+2026-08-31 01:24:41.075 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-08-31 01:24:41.079 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:44:52.082 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 12:45:24.553 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:45:24.559 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:45:25.138 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:48:38.896 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:48:38.897 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:48:39.154 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:52:36.520 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 12:52:39.467 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:52:39.501 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:52:39.986 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 12:52:39.986 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:52:54.885 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:52:54.886 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:52:54.906 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 12:52:54.906 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:52:59.038 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:52:59.039 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:52:59.058 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 12:52:59.058 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:56:12.549 [main] INFO  org.example.Utility.Console - Welcome to Lab6APP. Enter help to get command list.
+2026-09-03 12:56:12.552 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 12:57:04.597 [main] INFO  org.example.Utility.Console - Welcome to Lab6APP. Enter help to get command list.
+2026-09-03 12:57:04.598 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 12:58:08.114 [main] INFO  org.example.Utility.Console - Welcome to Lab6APP. Enter help to get command list.
+2026-09-03 12:58:08.115 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 12:58:14.634 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 12:58:14.641 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 12:58:14.946 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 12:58:14.946 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 12:59:02.910 [main] INFO  org.example.Utility.Console - Welcome to Lab6APP. Enter help to get command list.
+2026-09-03 12:59:02.914 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 13:02:32.114 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 13:02:35.410 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 13:02:35.418 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 13:02:35.717 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:02:35.718 [main] INFO  org.example.Utility.Console - запрос успешно отправлен. Ответ сервера:add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-03 13:03:53.493 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 13:03:56.442 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 13:03:56.450 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 13:03:56.716 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:04:43.618 [main] INFO  org.example.Utility.Console - имя команды add, аргументы:null
+2026-09-03 13:06:49.573 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='add', description='null', arguments='[Ljava.lang.String;@710c2b53'}
+2026-09-03 13:06:49.666 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:06:56.223 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-03 13:06:56.224 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-03 13:06:56.241 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:17:08.578 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 13:17:18.208 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-03 13:17:18.241 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-03 13:17:18.538 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:32:33.822 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-03 13:32:33.825 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-03 13:32:33.903 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:34:58.793 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-03 13:34:58.794 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-03 13:34:58.877 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:35:20.378 [main] INFO  org.example.Utility.Console - имя команды add, аргументы:null
+2026-09-03 13:37:42.011 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='add', description='null', arguments='[Ljava.lang.String;@1caa0244'}
+2026-09-03 13:37:42.065 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:58:49.078 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 13:58:56.789 [main] INFO  org.example.Utility.Console - имя команды fcn, аргументы:[n]
+2026-09-03 13:58:56.823 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='fcn', description='null', arguments='[Ljava.lang.String;@709ba3fb'}
+2026-09-03 13:58:57.119 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:59:12.376 [main] INFO  org.example.Utility.Console - имя команды fcn, аргументы:[c]
+2026-09-03 13:59:12.377 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='fcn', description='null', arguments='[Ljava.lang.String;@68c9133c'}
+2026-09-03 13:59:12.398 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:59:21.621 [main] INFO  org.example.Utility.Console - имя команды fcn, аргументы:[g]
+2026-09-03 13:59:21.622 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='fcn', description='null', arguments='[Ljava.lang.String;@cc43f62'}
+2026-09-03 13:59:21.642 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 13:59:41.423 [main] INFO  org.example.Utility.Console - имя команды fcn, аргументы:[a]
+2026-09-03 13:59:41.424 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='fcn', description='null', arguments='[Ljava.lang.String;@413d1baf'}
+2026-09-03 13:59:41.443 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 14:08:23.332 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 14:46:26.969 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-03 14:46:39.483 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-03 14:46:39.517 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-03 14:46:39.811 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-03 14:46:44.791 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[401293]
+2026-09-06 20:03:49.824 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:04:39.224 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-06 20:04:39.230 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-06 20:04:39.527 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:04:43.885 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:14:59.958 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:15:03.347 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:23:50.410 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:23:52.789 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-06 20:23:52.796 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-06 20:23:53.062 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:24:19.400 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:24:29.421 [main] ERROR org.example.Utility.Console - server error
+2026-09-06 20:25:55.450 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:25:58.119 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-06 20:25:58.125 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-06 20:25:58.433 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:26:01.757 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:26:11.779 [main] ERROR org.example.Utility.Console - server error
+2026-09-06 20:29:25.911 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:29:28.777 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:29:39.068 [main] ERROR org.example.Utility.Console - server error
+2026-09-06 20:32:04.520 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:32:08.212 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:32:18.453 [main] ERROR org.example.Utility.Console - server error
+2026-09-06 20:33:35.820 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-06 20:33:35.821 [main] INFO  org.example.Utility.Console - попытка отправки запроса:[FAILED toString()]
+2026-09-06 20:33:35.891 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:33:41.616 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:33:41.635 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:39:04.042 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='ubi', description='null', arguments='[Ljava.lang.String;@6caf0677'}
+2026-09-06 20:42:30.970 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[1]
+2026-09-06 20:42:31.009 [main] INFO  org.example.Network.UDPClient - response received
+2026-09-06 20:42:40.781 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-06 20:42:53.860 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[3]
+2026-09-06 20:42:54.140 [main] INFO  org.example.Network.UDPClient - response received: true
+2026-09-06 20:44:08.642 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='ubi', description='null', arguments='[Ljava.lang.String;@402c4085'}
+2026-09-06 20:44:08.666 [main] INFO  org.example.Network.UDPClient - response received: Музыкальная группа обновлена
+2026-09-06 20:47:22.109 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[312]
+2026-09-06 20:47:22.147 [main] INFO  org.example.Network.UDPClient - response received: false
+2026-09-06 20:47:27.578 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[0]
+2026-09-06 20:47:27.597 [main] INFO  org.example.Network.UDPClient - response received: false
+2026-09-06 20:47:30.405 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[3]
+2026-09-06 20:47:30.423 [main] INFO  org.example.Network.UDPClient - response received: true
+2026-09-06 20:48:16.182 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='ubi', description='null', arguments='[Ljava.lang.String;@183ec003'}
+2026-09-06 20:48:16.261 [main] INFO  org.example.Network.UDPClient - response received: Музыкальная группа обновлена
+2026-09-07 00:00:55.299 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-07 00:00:58.827 [main] INFO  org.example.Utility.Console - имя команды help, аргументы:null
+2026-09-07 00:00:58.835 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='help', description='null', arguments='null'}
+2026-09-07 00:00:59.012 [main] INFO  org.example.Network.UDPClient - response received: add: добавить новый элемент в коллекцию. Команда от одного аргумента - добавить по XML
+от девяти аргументов - явно задать параметры, без аргументов - интерактивный режим
+fsn: fstarts_with_name: вывести элементы, значение поля name которых начинается с заданной подстроки
+aifm: add_if_min: добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции
+clear: очистить коллекцию
+show: показать информацию о коллекции
+save: сохранить коллекцию в файл
+rmg: remove_greater: удалить из коллекции все элементы, превышающие заданный
+execute: считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.
+rmi: remove_by_id :удалить элемент из коллекции по его id
+fcn: filter_contains_name: вывести элементы, значение поля name которых содержит заданную подстроку
+rml: remove_lower: удалить из коллекции все элементы, меньшие, чем заданный
+help: вывести справку по доступным командам
+ubi: update_by_id: обновить значение элемента коллекции, id которого равен заданному
+info: вывести в стандартный поток вывода информацию о коллекции
+group: сгруппировать элементы коллекции по значению поля creationDate, вывести количество элементов в каждой группе
+2026-09-07 00:01:03.473 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[423]
+2026-09-07 00:01:03.508 [main] INFO  org.example.Network.UDPClient - response received: false
+2026-09-07 00:01:10.741 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[5]
+2026-09-07 00:01:10.756 [main] INFO  org.example.Network.UDPClient - response received: true
+2026-09-07 00:01:51.647 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='ubi', description='null', arguments='[Ljava.lang.String;@1caa0244'}
+2026-09-07 00:01:51.672 [main] INFO  org.example.Network.UDPClient - response received: Музыкальная группа обновлена
+2026-09-07 00:01:58.050 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-07 00:01:58.051 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-07 00:01:58.080 [main] INFO  org.example.Network.UDPClient - response received: [MusicBand{
+ID: 4, NAME: galdjlasf, COORDINATES: Coordinates{3142, 134.0}, CREATION DATE: 2026-09-03T13:04:43.648969077+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 1234, ESTABLISHMENT DATE: 2026-09-03, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: Name, HEIGHT: 234.23, PASSPORT ID: sdkfl24, HAIR COLOR: ORANGE, Location{2.0, 2, 2.234}}
+}, MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}, MusicBand{
+ID: 3, NAME: Loool, COORDINATES: Coordinates{1234, 2234.0}, CREATION DATE: 2026-09-06T20:48:16.210582999+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-09-06, MUSIC GENRE: SOUL,
+FRONT MAN: Person{ NAME: Genius, HEIGHT: 174.0, PASSPORT ID: KFSDKF213KFK4224, HAIR COLOR: ORANGE, Location{12.55, -421, 43.44}}
+}, MusicBand{
+ID: 5, NAME: New brand, COORDINATES: Coordinates{23, 324.0}, CREATION DATE: 2026-09-07T00:01:51.660357277+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 321, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: Ya, HEIGHT: 187.0, PASSPORT ID: KFKK134KFSK, HAIR COLOR: BLUE, Location{1.0, 1234, -254245.0}}
+}, MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}]
+2026-09-07 00:02:43.583 [main] INFO  org.example.Utility.Console - имя команды info, аргументы:null
+2026-09-07 00:02:43.611 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='info', description='null', arguments='null'}
+2026-09-07 00:02:43.625 [main] INFO  org.example.Network.UDPClient - response received: CollectionManager{size:5, дата инициализации: 2026-09-07T00:00:50.403434128+03:00[Europe/Moscow]}
+2026-09-07 00:03:45.394 [main] INFO  org.example.Utility.Console - имя команды ubi, аргументы:[4]
+2026-09-07 00:03:45.411 [main] INFO  org.example.Network.UDPClient - response received: true
+2026-09-07 00:05:28.576 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='ubi', description='null', arguments='[Ljava.lang.String;@24569dba'}
+2026-09-07 00:05:28.588 [main] INFO  org.example.Network.UDPClient - response received: Музыкальная группа обновлена
+2026-09-07 00:05:33.766 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-07 00:05:33.767 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-07 00:05:33.808 [main] INFO  org.example.Network.UDPClient - response received: [MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}, MusicBand{
+ID: 3, NAME: Loool, COORDINATES: Coordinates{1234, 2234.0}, CREATION DATE: 2026-09-06T20:48:16.210582999+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-09-06, MUSIC GENRE: SOUL,
+FRONT MAN: Person{ NAME: Genius, HEIGHT: 174.0, PASSPORT ID: KFSDKF213KFK4224, HAIR COLOR: ORANGE, Location{12.55, -421, 43.44}}
+}, MusicBand{
+ID: 5, NAME: New brand, COORDINATES: Coordinates{23, 324.0}, CREATION DATE: 2026-09-07T00:01:51.660357277+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 321, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: Ya, HEIGHT: 187.0, PASSPORT ID: KFKK134KFSK, HAIR COLOR: BLUE, Location{1.0, 1234, -254245.0}}
+}, MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}, MusicBand{
+ID: 4, NAME: True band, COORDINATES: Coordinates{-24214, 1.24533333341E11}, CREATION DATE: 2026-09-07T00:05:28.585406592+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2394592898, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Ivan, HEIGHT: 234.0, PASSPORT ID: 11FDSKFKKSJFK93942, HAIR COLOR: WHITE, Location{1432.0, 2142, -0.1234}}
+}]
+2026-09-07 00:06:06.223 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-07 00:06:06.224 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-07 00:06:06.238 [main] INFO  org.example.Network.UDPClient - response received: [MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}, MusicBand{
+ID: 3, NAME: Loool, COORDINATES: Coordinates{1234, 2234.0}, CREATION DATE: 2026-09-06T20:48:16.210582999+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-09-06, MUSIC GENRE: SOUL,
+FRONT MAN: Person{ NAME: Genius, HEIGHT: 174.0, PASSPORT ID: KFSDKF213KFK4224, HAIR COLOR: ORANGE, Location{12.55, -421, 43.44}}
+}, MusicBand{
+ID: 5, NAME: New brand, COORDINATES: Coordinates{23, 324.0}, CREATION DATE: 2026-09-07T00:01:51.660357277+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 321, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: Ya, HEIGHT: 187.0, PASSPORT ID: KFKK134KFSK, HAIR COLOR: BLUE, Location{1.0, 1234, -254245.0}}
+}, MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}, MusicBand{
+ID: 4, NAME: True band, COORDINATES: Coordinates{-24214, 1.24533333341E11}, CREATION DATE: 2026-09-07T00:05:28.585406592+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2394592898, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Ivan, HEIGHT: 234.0, PASSPORT ID: 11FDSKFKKSJFK93942, HAIR COLOR: WHITE, Location{1432.0, 2142, -0.1234}}
+}]
+2026-09-07 00:06:25.545 [main] INFO  org.example.Utility.Console - имя команды info, аргументы:null
+2026-09-07 00:06:25.545 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='info', description='null', arguments='null'}
+2026-09-07 00:06:25.561 [main] INFO  org.example.Network.UDPClient - response received: CollectionManager{size:5, дата инициализации: 2026-09-07T00:00:50.403434128+03:00[Europe/Moscow]}
+2026-09-07 00:19:15.748 [main] INFO  org.example.Utility.Console - клиент запущен
+2026-09-07 00:19:21.044 [main] INFO  org.example.Utility.Console - имя команды show, аргументы:null
+2026-09-07 00:19:21.077 [main] INFO  org.example.Utility.Console - попытка отправки запроса:Command{name='show', description='null', arguments='null'}
+2026-09-07 00:19:21.277 [main] INFO  org.example.Network.UDPClient - response received: [MusicBand{
+ID: 2, NAME: Group, COORDINATES: Coordinates{1, 1.0}, CREATION DATE: 2026-06-08T19:50:47.620694857+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-06-08, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Tvari, HEIGHT: 170.0, PASSPORT ID: 1241KDSKKS, HAIR COLOR: WHITE, Location{1.0, 1, 1.0}}
+}, MusicBand{
+ID: 3, NAME: Loool, COORDINATES: Coordinates{1234, 2234.0}, CREATION DATE: 2026-09-06T20:48:16.210582999+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2, ESTABLISHMENT DATE: 2026-09-06, MUSIC GENRE: SOUL,
+FRONT MAN: Person{ NAME: Genius, HEIGHT: 174.0, PASSPORT ID: KFSDKF213KFK4224, HAIR COLOR: ORANGE, Location{12.55, -421, 43.44}}
+}, MusicBand{
+ID: 5, NAME: New brand, COORDINATES: Coordinates{23, 324.0}, CREATION DATE: 2026-09-07T00:01:51.660357277+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 321, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: Ya, HEIGHT: 187.0, PASSPORT ID: KFKK134KFSK, HAIR COLOR: BLUE, Location{1.0, 1234, -254245.0}}
+}, MusicBand{
+ID: 1, NAME: Pink Floyd, COORDINATES: Coordinates{100, 250.5}, CREATION DATE: 2024-03-15T10:30Z,
+NUMBER OF PARTICIPANTS: 5, ESTABLISHMENT DATE: 1965-10-15, MUSIC GENRE: PROGRESSIVE_ROCK,
+FRONT MAN: Person{ NAME: David Gilmour, HEIGHT: 175.5, PASSPORT ID: AB1234567, HAIR COLOR: BLUE, Location{55.7558, 3761750, 156.0}}
+}, MusicBand{
+ID: 4, NAME: True band, COORDINATES: Coordinates{-24214, 1.24533333341E11}, CREATION DATE: 2026-09-07T00:05:28.585406592+03:00[Europe/Moscow],
+NUMBER OF PARTICIPANTS: 2394592898, ESTABLISHMENT DATE: 2026-09-07, MUSIC GENRE: ROCK,
+FRONT MAN: Person{ NAME: Ivan, HEIGHT: 234.0, PASSPORT ID: 11FDSKFKKSJFK93942, HAIR COLOR: WHITE, Location{1432.0, 2142, -0.1234}}
+}], 1808 bytes
+2026-09-07 01:46:15.990 [main] INFO  org.example.Utility.Console - клиент запущен

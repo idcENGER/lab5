@@ -29,6 +29,8 @@ public interface CommandWithArgument {
                     }catch (CannotResolveClassException e){
                         System.out.println("Ошибка парсинга: "+e.getMessage());
                         return Optional.empty();
+                    } catch (Exception e) {
+                        System.out.println("Ошибка аргумента");
                     }
                 }
                 if (arguments.length == 9){
@@ -96,11 +98,13 @@ public interface CommandWithArgument {
 
             case "ubi" ->{
                 if (arguments.length == 1){
-                    MusicBand musicBand = MusicBandBuilder.buildMusicBandByNoArgs();
-                    arguments = new String[]{arguments[0],XmlHandler.serialize(musicBand)};
-                    return Optional.of(arguments);
+                    try {
+                        Integer.parseInt(arguments[0]);
+                    } catch (NumberFormatException e) {
+                        return Optional.empty();
+                    }
                 }
-                return Optional.empty();
+                return Optional.of(arguments);
             }
 
             case "rmi" ->{

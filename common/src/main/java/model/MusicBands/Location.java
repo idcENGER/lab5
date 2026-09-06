@@ -1,38 +1,46 @@
 package model.MusicBands;
 
-public class Location {
-    private double x;
-    private long y;
-    private float z;
+import java.io.Serial;
+import java.io.Serializable;
 
-    public Location(double x,long y, float z){
+public class Location implements Serializable {
+
+    private final double x;
+    private final long y;
+    private final float z;
+
+
+    @Serial
+    private static final long serialVersionUID = -5770729028301307786L;
+
+    public Location(double x, long y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public double getX() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location l = (Location) o;
+        return x == l.x() && y == l.y() && z == l.z();
+    }
+
+    public double x() {
         return x;
     }
 
-    public long getY() {
+    public long y() {
         return y;
     }
 
-    public float getZ() {
+    public float z() {
         return z;
     }
 
     @Override
-    public boolean equals(Object o){
-        if (this == o)return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Location l = (Location) o;
-        return x == l.getX() && y == l.getY() && z == l.getZ();
-    }
-
-    @Override
-    public String toString(){
+    public String toString() {
         return getClass().getSimpleName() + "{" + x + ", " + y + ", " + z + "}";
     }
 }

@@ -18,7 +18,7 @@ public class Help extends Command {
     public Response execute(String... args) {
         StringBuilder s = new StringBuilder();
         for (var value : this.commandInvoker.getCommandMap().values()) {
-            s.append(value.getDescription()).append("\n");
+            if (!value.getName().equals("cid")) s.append(value.getDescription()).append("\n");
         }
         s.setLength(s.length() - 1);
         return new Response(s.toString());

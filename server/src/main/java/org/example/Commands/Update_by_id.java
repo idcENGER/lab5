@@ -6,7 +6,10 @@ import model.MusicBands.*;
 import utility.MusicBandBuilder;
 import utility.XmlHandler;
 
+import java.io.IOException;
+
 public class Update_by_id extends model.commands.Command {
+
     CollectionManager collectionManager;
 
     public Update_by_id(CollectionManager collectionManager) {
@@ -15,12 +18,13 @@ public class Update_by_id extends model.commands.Command {
     }
 
     @Override
-    public Response execute(String... args) {
+    public Response execute(String... args) throws IOException, ClassNotFoundException {
         try {
             int id = Integer.parseInt(args[0]);
-            MusicBand newMusicBand  = (MusicBand) XmlHandler.deserialize(args[1]);
+            MusicBand newMusicBand = (MusicBand) XmlHandler.deserialize(args[1]);
             MusicBand musicBand = collectionManager.getMusicBandByID(id);
-            MusicBandBuilder.MusicBandUpdater(musicBand,newMusicBand);
+            MusicBandBuilder.MusicBandUpdater(musicBand, newMusicBand);
+            collectionManager.save();
             return new Response("Музыкальная группа обновлена");
         }catch (NullPointerException e){
             return new Response("Музыкальной группы с таким id нет");

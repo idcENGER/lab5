@@ -1,5 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<HashSet>
+<set>
+  <MusicBand>
+    <id>6</id>
+    <name>Wow</name>
+    <coordinates>
+      <x>2</x>
+      <y>534.0</y>
+    </coordinates>
+    <creationDate>2026-09-07T00:39:22.971610961+03:00[Europe/Moscow]</creationDate>
+    <numberOfParticipants>44</numberOfParticipants>
+    <establishmentDate>2026-09-07</establishmentDate>
+    <genre>ROCK</genre>
+    <frontMan>
+      <name>Kyu</name>
+      <height>140.0</height>
+      <passportID>141K1231DSKKS</passportID>
+      <hairColor>WHITE</hairColor>
+      <location>
+        <x>12.0</x>
+        <y>14</y>
+        <z>15.0</z>
+      </location>
+    </frontMan>
+  </MusicBand>
+  <MusicBand>
+    <id>4</id>
+    <name>True band</name>
+    <coordinates>
+      <x>-24214</x>
+      <y>1.24533333341E11</y>
+    </coordinates>
+    <creationDate>2026-09-07T00:05:28.585406592+03:00[Europe/Moscow]</creationDate>
+    <numberOfParticipants>2394592898</numberOfParticipants>
+    <establishmentDate>2026-09-07</establishmentDate>
+    <genre>ROCK</genre>
+    <frontMan>
+      <name>Ivan</name>
+      <height>234.0</height>
+      <passportID>11FDSKFKKSJFK93942</passportID>
+      <hairColor>WHITE</hairColor>
+      <location>
+        <x>1432.0</x>
+        <y>2142</y>
+        <z>-0.1234</z>
+      </location>
+    </frontMan>
+  </MusicBand>
+  <MusicBand>
+    <id>1</id>
+    <name>Pink Floyd</name>
+    <coordinates>
+      <x>100</x>
+      <y>250.5</y>
+    </coordinates>
+    <creationDate>2024-03-15T10:30:00Z[Z]</creationDate>
+    <numberOfParticipants>5</numberOfParticipants>
+    <establishmentDate>1965-10-15</establishmentDate>
+    <genre>PROGRESSIVE_ROCK</genre>
+    <frontMan>
+      <name>David Gilmour</name>
+      <height>175.5</height>
+      <passportID>AB1234567</passportID>
+      <hairColor>BLUE</hairColor>
+      <location>
+        <x>55.7558</x>
+        <y>3761750</y>
+        <z>156.0</z>
+      </location>
+    </frontMan>
+  </MusicBand>
   <MusicBand>
     <id>2</id>
     <name>Group</name>
@@ -24,26 +92,49 @@
     </frontMan>
   </MusicBand>
   <MusicBand>
-    <id>1</id>
-    <name>Pink Floyd</name>
+    <id>3</id>
+    <name>Loool</name>
     <coordinates>
-      <x>100</x>
-      <y>250.5</y>
+      <x>1234</x>
+      <y>2234.0</y>
     </coordinates>
-    <creationDate>2024-03-15T10:30Z</creationDate>
-    <numberOfParticipants>5</numberOfParticipants>
-    <establishmentDate>1965-10-15</establishmentDate>
-    <genre>PROGRESSIVE_ROCK</genre>
+    <creationDate>2026-09-06T20:48:16.210582999+03:00[Europe/Moscow]</creationDate>
+    <numberOfParticipants>2</numberOfParticipants>
+    <establishmentDate>2026-09-06</establishmentDate>
+    <genre>SOUL</genre>
     <frontMan>
-      <name>David Gilmour</name>
-      <height>175.5</height>
-      <passportID>AB1234567</passportID>
-      <hairColor>BLUE</hairColor>
+      <name>Genius</name>
+      <height>174.0</height>
+      <passportID>KFSDKF213KFK4224</passportID>
+      <hairColor>ORANGE</hairColor>
       <location>
-        <x>55.7558</x>
-        <y>3761750</y>
-        <z>156.0</z>
+        <x>12.55</x>
+        <y>-421</y>
+        <z>43.44</z>
       </location>
     </frontMan>
   </MusicBand>
-</HashSet>
+  <MusicBand>
+    <id>5</id>
+    <name>New brand</name>
+    <coordinates>
+      <x>23</x>
+      <y>324.0</y>
+    </coordinates>
+    <creationDate>2026-09-07T00:01:51.660357277+03:00[Europe/Moscow]</creationDate>
+    <numberOfParticipants>321</numberOfParticipants>
+    <establishmentDate>2026-09-07</establishmentDate>
+    <genre>PROGRESSIVE_ROCK</genre>
+    <frontMan>
+      <name>Ya</name>
+      <height>187.0</height>
+      <passportID>KFKK134KFSK</passportID>
+      <hairColor>BLUE</hairColor>
+      <location>
+        <x>1.0</x>
+        <y>1234</y>
+        <z>-254245.0</z>
+      </location>
+    </frontMan>
+  </MusicBand>
+</set>

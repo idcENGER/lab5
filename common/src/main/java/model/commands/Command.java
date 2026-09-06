@@ -4,10 +4,14 @@ import model.MusicBands.MusicBand;
 import network.Response;
 
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Command implements Executable {
+public class Command implements Executable, Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 3513125740951221064L;
     private final String name;
     private String description;
     private Object arguments;
@@ -51,6 +55,10 @@ public class Command implements Executable {
     @Override
     public Response execute(String...args) throws IOException, ClassNotFoundException {
         return null;
+    }
+
+    public void setArguments(Object arguments) {
+        this.arguments = arguments;
     }
 
     @Override

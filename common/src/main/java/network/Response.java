@@ -1,12 +1,12 @@
 package network;
 
-public class Response {
+import java.io.Serial;
+import java.io.Serializable;
 
-    private final String content;
+public record Response(String content) implements Serializable {
 
-    public Response(String response) {
-        this.content = response;
-    }
+    @Serial
+    private static final long serialVersionUID = -3733091571138451960L;
 
     @Override
     public String toString(){

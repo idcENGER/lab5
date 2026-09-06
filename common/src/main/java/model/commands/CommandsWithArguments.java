@@ -10,4 +10,5 @@ public enum CommandsWithArguments {
     rml,
     rmg,
     rmi,
+    cid
 }

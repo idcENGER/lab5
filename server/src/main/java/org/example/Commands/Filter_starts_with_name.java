@@ -5,7 +5,9 @@ import org.example.Menegers.CollectionManager;
 import model.MusicBands.*;
 import utility.XmlHandler;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Filter_starts_with_name extends model.commands.Command {
 
@@ -20,9 +22,13 @@ public class Filter_starts_with_name extends model.commands.Command {
     public Response execute(String... args){
         try{
             HashSet<MusicBand> set = collectionManager.filterMusicBandByName(XmlHandler.SpaceRemover(args[0]),true);
-            if (!set.isEmpty()){
+            TreeSet<MusicBand> collection = new TreeSet<>(
+                    Comparator.comparing((MusicBand band) -> band.getName(),String.CASE_INSENSITIVE_ORDER)
+            );
+            collection.addAll(set);
+            if (!collection.isEmpty()){
                 StringBuilder s = new StringBuilder();
-                for (MusicBand band : set){
+                for (MusicBand band : collection){
                     s.append(band).append("\n");
                 }
                 s.setLength(s.length() - 1);

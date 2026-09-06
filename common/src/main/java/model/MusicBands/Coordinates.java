@@ -1,39 +1,46 @@
 package model.MusicBands;
 
-public class Coordinates implements Comparable<Coordinates> {
-    private int x;
-    private Double y; //Значение поля должно быть больше -147, Поле не может быть null
+import java.io.Serial;
+import java.io.Serializable;
 
-    public Coordinates(int x, Double y) {
+public class Coordinates implements Comparable<Coordinates>, Serializable {
+    @Serial
+    private static final long serialVersionUID = -771032205396106619L;
+
+    private final int x;
+    private final double y;
+
+    public Coordinates(int x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordinates c = (Coordinates) o;
+        return x == c.x() && y == c.y();
+    }
+
+    public int x() {
         return x;
     }
 
-    public Double getY() {
+    public double y() {
         return y;
     }
 
     @Override
-    public boolean equals(Object o){
-        if (this == o)return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Coordinates c = (Coordinates) o;
-        return x == c.getX() && y.equals(c.getY());
-    }
-
-    @Override
-    public String toString(){
+    public String toString() {
         return getClass().getSimpleName() + "{" + x + ", " + y + "}";
     }
 
 
     @Override
     public int compareTo(Coordinates coordinates) {
-        return (int) (((x*x)+(y*y)) - ((coordinates.x*coordinates.x)
-                +(coordinates.y*coordinates.y)));
+        return (int) (((x * x) + (y * y)) - ((coordinates.x * coordinates.x)
+                + (coordinates.y * coordinates.y)));
     }
 }

@@ -1,7 +1,9 @@
 package org.example.Network;
 
 import network.Request;
+import network.Response;
 import org.example.Menegers.CommandInvoker;
+import utility.ByteHandler;
 import utility.MessageAssembler;
 import utility.MessageFragmenter;
 import utility.XmlHandler;
@@ -58,7 +60,6 @@ public class UDPServer {
                 if (!readyKey.isValid()) {
                     continue;
                 }
-
                 if (readyKey.isReadable()) {
                     serve(readyKey);
                 }
@@ -99,15 +100,17 @@ public class UDPServer {
                 byte[] fullMsg = assembler.assemble();
                 String requestString = new String(fullMsg);
                 Request request = (Request)XmlHandler.deserialize(requestString);
-                String responseStr = response(request);
-                byte[] response = responseStr.getBytes();
+                Response response = execute(request);
                 int messageId = random.nextInt(1000);
-
-                List<ByteBuffer> fragments = MessageFragmenter.fragment(response,messageId);
+                byte[] bytes = ByteHandler.toBytes(response);
+                List<ByteBuffer> fragments = MessageFragmenter.fragment(
+                        bytes,
+                        messageId
+                );
                 for (ByteBuffer fragment : fragments) {
                     channel.send(fragment, sender);
                 }
-                logger.info("ответ отправлен пользователю {},содержание:{}",sender,responseStr);
+                logger.info("ответ отправлен пользователю {},количество байт:\n{}",sender,bytes.length);
             }
         }catch (IllegalStateException stateException){
             serverContext.removeAssembler(header.messageId);
@@ -116,13 +119,13 @@ public class UDPServer {
 
     }
 
-    private String response(Request request) throws IOException, ClassNotFoundException {
+    private Response execute(Request request) throws IOException, ClassNotFoundException {
         if (request.getArguments() == null) {
             logger.info("выполняется запрос {}",request);
-            return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), null));
+            return this.commandInvoker.execute(request.command().getName(), null);
         }
         logger.info("выполняется запрос {}",request);
-        return XmlHandler.serialize(this.commandInvoker.execute(request.getCommand().getName(), request.getArguments()));
+        return this.commandInvoker.execute(request.command().getName(), request.getArguments());
     }
 
     private static class ServerContext {
@@ -143,4 +146,5 @@ public class UDPServer {
             assemblers.remove(msgId);
         }
     }
+
 }

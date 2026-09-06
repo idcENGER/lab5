@@ -41,6 +41,7 @@ public class Server {
         commandInvoker.register(new Remove_greater(collectionManager));
         commandInvoker.register(new Remove_lower(collectionManager));
         commandInvoker.register(new Execute_script(commandInvoker));
+        commandInvoker.register(new CheckId(collectionManager));
         collectionManager.recoverCollection(args[0]);
         UDPServer server = new UDPServer(commandInvoker,24868);
         server.run();

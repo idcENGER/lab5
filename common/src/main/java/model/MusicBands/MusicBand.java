@@ -1,10 +1,15 @@
 package model.MusicBands;
 
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
-public class MusicBand {
+public class MusicBand implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 4770395037001314184L;
+
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null

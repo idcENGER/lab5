@@ -1,6 +1,13 @@
 package model.MusicBands;
 
-public class Person implements Comparable<Person>{
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Person implements Comparable<Person>, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1819239397012097194L;
+
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Float height; //Поле может быть null, Значение поля должно быть больше 0
     private String passportID; //Строка не может быть пустой, Значение этого поля должно быть уникальным, Длина строки не должна быть больше 22, Поле может быть null

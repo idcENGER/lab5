@@ -3,5 +3,5 @@ add Group;1,1;2;ROCK;Tvari;170;1241KDSKKS;WHITE;1,1,1
 add Wow;2,534;44;ROCK;Kyu;140;141K1231DSKKS;WHITE;12,14,15
 info
 execute /home/enger/Projects/lab6/client/src/main/resources/sc1
-info
+execute /home/enger/Projects/lab6/client/src/main/resources/simple
 show

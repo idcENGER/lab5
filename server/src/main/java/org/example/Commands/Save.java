@@ -2,7 +2,7 @@ package org.example.Commands;
 
 import network.Response;
 import org.example.Menegers.CollectionManager;
-import org.example.Utility.ScannerParser;
+import utility.XmlHandler;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class Save extends model.commands.Command {
 
     @Override
     public Response execute(String... args) {
-        String data = ScannerParser.SerializeXML(collectionManager.getCollections());
+        String data = XmlHandler.serialize(collectionManager.getCollections());
         try{
             if(args.length != 0){
                 throw new ArrayIndexOutOfBoundsException("Команда не поддерживает аргументы");

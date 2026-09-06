@@ -1,23 +1,27 @@
 package org.example.Menegers;
 
+import com.thoughtworks.xstream.io.StreamException;
 import model.MusicBands.Coordinates;
 import model.MusicBands.MusicBand;
 import model.MusicBands.MusicGenre;
 import model.MusicBands.Person;
 import org.example.Exceptions.WrongArgumentException;
 
-import org.example.Utility.ScannerParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import utility.XmlHandler;
 
-import java.io.IOException;
+import java.io.*;
 import java.time.ZonedDateTime;
 import java.util.HashSet;
+import java.util.Scanner;
 
 
-public class CollectionManager {
+public class CollectionManager implements Serializable {
 
     private static final Logger logger = LoggerFactory.getLogger(CollectionManager.class);
+    @Serial
+    private static final long serialVersionUID = 3468168139201341661L;
     private final CommandInvoker commandInvoker;
 
     private final java.time.ZonedDateTime date = ZonedDateTime.now();
@@ -50,20 +54,38 @@ public class CollectionManager {
     }
 
     public void recoverCollection(String path) throws IOException,NullPointerException {
-        HashSet<MusicBand> data = ScannerParser.DeserializeCollectionXML(path);
-        boolean IdIsUnique = data.stream().map(MusicBand::getId).allMatch(new HashSet<Integer>()::add);
-        boolean PassportIdIsUnique = data.stream().map(MusicBand::getFrontMan).map(Person::getPassportID).allMatch(new HashSet<String>()::add);
-        if (IdIsUnique && PassportIdIsUnique) {
-            collections.addAll(data);
-        } else if (!PassportIdIsUnique & !IdIsUnique) {
-            logger.error("Паспортные данные в коллекции не уникальны");
-            logger.error("ID в коллекции не уникальны");
-            System.exit(0);
-        } else if (!PassportIdIsUnique){
-            logger.error("Паспортные данные в коллекции не уникальны");
-            System.exit(0);
-        }else {
-            logger.error("ID в коллекции не уникальны");
+        File file = new File(path);
+        if (!file.exists() || !file.canRead()) {
+            logger.error("collection not found");
+            throw new FileNotFoundException("collection not found");
+        }
+
+        StringBuilder contentBuilder = new StringBuilder();
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                contentBuilder.append(scanner.nextLine().strip());
+            }
+        }
+        String content = contentBuilder.toString();
+        try {
+            HashSet<MusicBand> data = (HashSet<MusicBand>) XmlHandler.deserialize(content);
+            boolean IdIsUnique = data.stream().map((musicBand -> musicBand.getId())).allMatch(new HashSet<Integer>()::add);
+            boolean PassportIdIsUnique = data.stream().map(musicBand -> musicBand.getFrontMan()).map(person -> person.getPassportID()).allMatch(new HashSet<String>()::add);
+            if (IdIsUnique && PassportIdIsUnique) {
+                collections.addAll(data);
+            } else if (!PassportIdIsUnique & !IdIsUnique) {
+                logger.error("Паспортные данные в коллекции не уникальны");
+                logger.error("ID в коллекции не уникальны");
+                System.exit(0);
+            } else if (!PassportIdIsUnique){
+                logger.error("Паспортные данные в коллекции не уникальны");
+                System.exit(0);
+            }else {
+                logger.error("ID в коллекции не уникальны");
+                System.exit(0);
+            }
+        }catch (StreamException e){
+            logger.error("Invalid file");
             System.exit(0);
         }
     }
@@ -115,7 +137,7 @@ public class CollectionManager {
             }
             return set;
         }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+            logger.info("Collection is empty");
             return null;
         }
     }
@@ -151,8 +173,8 @@ public class CollectionManager {
         }
     }
 
-    /*
-    * @params MusicGenre
+    /**
+    * @params {@link  MusicGenre}
     * this method compare Enum elements by there order
     * if order our genre greater than genre current MusicBand then current MusicBand append to set
     * if method found such genres then @return HashSet<MusicBand>
@@ -167,8 +189,8 @@ public class CollectionManager {
                 }
             }
             return set;
-        }catch (NullPointerException ex){
-            System.out.println("Collection is empty");
+        }catch (NullPointerException ex) {
+            logger.warn("Collection is empty");
             return null;
         }
     }
